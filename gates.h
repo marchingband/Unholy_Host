@@ -1,0 +1,8 @@
+#ifndef GATES_H
+#define GATES_H
+
+void gates_init();
+void gate_set(uint8_t pin, const uint8_t value);
+uint8_t gate_get(uint8_t pin);
+
+#endif
