@@ -1,42 +1,60 @@
 #include <Arduino.h>
 #include "midiXparser.h"
 #include "midi.h"
+#include "dac.h"
+#include "gates.h"
+#include "cv.h"
+#include "handlers.h"
+#include "config.h"
+#include "constants.h"
 
-#define MIDI_NOTE_OFF 8
-#define MIDI_NOTE_ON 9
-#define MIDI_CC 11
-#define MIDI_PROGRAM_CHANGE 12
-
-#define MIDI_CC_VOLUME 7 // channel volume
-#define MIDI_CC_PAN 10
-#define MIDI_CC_EXP 11
-#define MIDI_CC_SUSTAIN 64 // pedal
-#define MIDI_CC_RELEASE 72 // release time
-#define MIDI_CC_MUTE 120 // instant mute
-#define MIDI_CC_RESET 121 // reset all controllers
-
+#define DAC_1 0
+#define DAC_2 1
+#define DAC_3 2
 
 midiXparser midiHostParser;
 midiXparser midiDeviceParser;
 
 int hi = 0;
 
-void handle_note_on(uint8_t channel, uint8_t note, uint8_t velocity)
+void handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
-    Serial1.println("note-on");
-    // Serial1.println("note-on ch:%d note:%d vel:%d", channel, note, velocity);
+    char log[100];
+    sprintf(log, "note-on chan:%d note:%d vel:%d", channel, note, velocity);
+    Serial1.println((const char *)log);
+    cv_1_handle_note_on_off(channel, note, velocity, is_note_on);
+    cv_2_handle_note_on_off(channel, note, velocity, is_note_on);
+    cv_3_handle_note_on_off(channel, note, velocity, is_note_on);
+    duophonic_handle_note_on_off(channel, note, velocity, is_note_on);
+    triphonic_handle_note_on_off(channel, note, velocity, is_note_on);
+    gates_handle_note_on_off(channel, note, velocity, is_note_on);
 }
 
-void handle_note_off(uint8_t channel, uint8_t note)
+void handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
 {
-    Serial1.println("note-off");
-    // Serial1.println("note-off ch:%d note:%d", channel, note);
+    char log[100];
+    sprintf(log, "cc chan:%d cc:%d val:%d", channel, cc, val);
+    Serial1.println((const char *)log);
+    cv_1_handle_cc(channel, cc, val);
+    cv_2_handle_cc(channel, cc, val);
+    cv_3_handle_cc(channel, cc, val);
+    gates_handle_cc(channel, cc, val);
 }
 
-void handle_cc_exp(uint8_t channel, uint8_t val)
+void handle_clock(uint8_t channel)
 {
-    Serial1.println("expression");
-    // Serial1.println("expression ch:%d val:%d", channel, val);
+    char log[100];
+    sprintf(log, "clock chan:%d", channel);
+    Serial1.println((const char *)log);
+    gates_handle_clock(channel);
+}
+
+void handle_transport(uint8_t channel, uint8_t code)
+{
+    char log[100];
+    sprintf(log, "transport chan:%d %s", channel, code == MIDI_START ? "start" : code == MIDI_CONTINUE ? "continue" : "stop");
+    Serial1.println((const char *)log);
+    gates_handle_transport(channel, code);
 }
 
 void handle_midi(uint8_t *msg)
@@ -44,7 +62,6 @@ void handle_midi(uint8_t *msg)
     // blink
     digitalWrite(13, hi);
     hi = hi==1 ? 0 : 1;
-    // blink
 
     if (!msg) return;
     uint8_t channel = msg[0] & 0b00001111;
@@ -54,59 +71,42 @@ void handle_midi(uint8_t *msg)
         {
             uint8_t note = msg[1] & 0b01111111;
             uint8_t velocity = msg[2] & 0b01111111;
-            handle_note_on(channel, note, velocity);
+            handle_note_on_off(channel + 1, note, velocity, true);
             break;
         }
         case MIDI_NOTE_OFF:
         {
             uint8_t note = msg[1] & 0b01111111;
             uint8_t velocity = msg[2] & 0b01111111;
-            handle_note_off(channel, note);
-            break;
-        }
-        case MIDI_PROGRAM_CHANGE:
-        {
+            handle_note_on_off(channel + 1, note, 0, false);
             break;
         }
         case MIDI_CC:
         {
-            uint8_t CC = msg[1] & 0b01111111;
+            uint8_t cc = msg[1] & 0b01111111;
             uint8_t val = msg[2]  & 0b01111111;
-            switch (CC){
-                case MIDI_CC_EXP:
-                {
-                    handle_cc_exp(channel, val);
-                }
-                case MIDI_CC_VOLUME:
-                case MIDI_CC_PAN:
-                case MIDI_CC_SUSTAIN:
-                case MIDI_CC_RELEASE:
-                case MIDI_CC_MUTE:
-                case MIDI_CC_RESET:
-                {
-                    break;
-                }
-            }
+            handle_cc(channel + 1, cc, val);
             break;
         }
+        case MIDI_CLOCK:
+        {
+            handle_clock(channel);
+        }
+        case MIDI_START:
+        case MIDI_STOP:
+        case MIDI_CONTINUE:
+        {
+            handle_transport(channel, code);
+        }
     }
-
 }
 
 void midi_host_parse(uint8_t in)
 {
     if ( midiHostParser.parse( in ) )  // Do we received a channel voice msg ?
     {
-        if ( 
-                midiHostParser.isMidiStatus(midiXparser::noteOnStatus) || 
-                midiHostParser.isMidiStatus(midiXparser::noteOffStatus) || 
-                midiHostParser.isMidiStatus(midiXparser::programChangeStatus) || 
-                midiHostParser.isMidiStatus(midiXparser::controlChangeStatus) 
-            ) 
-        {
-            uint8_t *msg = midiHostParser.getMidiMsg();
-            handle_midi(msg);
-        }
+        uint8_t *msg = midiHostParser.getMidiMsg();
+        handle_midi(msg);
     }
 }
 
@@ -114,21 +114,13 @@ void midi_device_parse(uint8_t in)
 {
     if ( midiDeviceParser.parse( in ) )  // Do we received a channel voice msg ?
     {
-        if ( 
-                midiDeviceParser.isMidiStatus(midiXparser::noteOnStatus) || 
-                midiDeviceParser.isMidiStatus(midiXparser::noteOffStatus) || 
-                midiDeviceParser.isMidiStatus(midiXparser::programChangeStatus) || 
-                midiDeviceParser.isMidiStatus(midiXparser::controlChangeStatus) 
-            ) 
-        {
-            uint8_t *msg = midiDeviceParser.getMidiMsg();
-            handle_midi(msg);
-        }
+        uint8_t *msg = midiDeviceParser.getMidiMsg();
+        handle_midi(msg);
     }
 }
 
 void midi_parser_init(void)
 {
-    midiHostParser.setMidiMsgFilter( midiXparser::channelVoiceMsgTypeMsk );
-    midiDeviceParser.setMidiMsgFilter( midiXparser::channelVoiceMsgTypeMsk );
+    midiHostParser.setMidiMsgFilter( midiXparser::channelVoiceMsgTypeMsk | midiXparser::realTimeMsgTypeMsk );
+    midiDeviceParser.setMidiMsgFilter( midiXparser::channelVoiceMsgTypeMsk | midiXparser::realTimeMsgTypeMsk );
 }

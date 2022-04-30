@@ -4,6 +4,7 @@
 #include "midi.h"
 #include "gates.h"
 #include "dac.h"
+#include "calibration.h"
 #include "rgb_led.h"
 
 #define USB_MODE_SELECT_PIN 5
@@ -43,8 +44,10 @@ void setup()
   test_lights();
   
   // start the dac
+  // init_just_dac_vals();
   dac_init();
-  dac_set_chan_all(100, 4096);  // test the dac : 4.04v 4096
+  test_dac();
+  // dac_set_chan_all(100, 4096);  // test the dac : 4.04v 4096
 
   // start the parser
   midi_parser_init();
@@ -74,4 +77,5 @@ void loop()
   {
     usb_host_loop();
   }
+  clear_triggers();
 }
