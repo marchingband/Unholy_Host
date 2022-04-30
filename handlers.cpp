@@ -336,14 +336,7 @@ void gates_handle_transport(uint8_t channel, uint8_t code)
             (gates[i].source == RESET_3)
         )
         {
-            switch(code){
-                case MIDI_START:
-                case MIDI_CONTINUE:
-                case MIDI_STOP:
-                    trigger_start(i);
-                    break;
-                default: break;
-            }
+            trigger_start(i);
         }
     }
 }

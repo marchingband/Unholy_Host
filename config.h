@@ -5,25 +5,20 @@
 
 #define DUOPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
 
-#ifdef DUOPHONIC
-    #define CV_1_AND_2_MODE          LAST // HIGHEST || LOWEST || LAST 
-#endif
-#ifdef TRIPHONIC
-    #define CV_1_AND_2_AND_3_MODE    LAST // HIGHEST || LOWEST || LAST
+#if defined(MONOPHONIC)
+    #define CV_1_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND
+    #define CV_2_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND
+    #define CV_3_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND 
+#elif defined(DUOPHONIC)
+    #define CV_1_AND_2_MODE        LAST // HIGHEST || LOWEST || LAST 
+    #define CV_3_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND 
+#elif defined(TRIPHONIC)
+    #define CV_1_AND_2_AND_3_MODE  LAST // HIGHEST || LOWEST || LAST
 #endif
 
 #define CV_1_SCALE V_OCT  // V_OCT || HZ_V  (CV_1_SCALE determines scale for all polyphonic cvs)
 #define CV_2_SCALE V_OCT  // V_OCT || HZ_V
 #define CV_3_SCALE V_OCT  // V_OCT || HZ_V
-
-#ifdef MONOPHONIC
-    #define CV_1_SOURCE   NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND
-    #define CV_2_SOURCE   NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND
-    #define CV_3_SOURCE   NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND 
-#endif
-#ifdef DUOPHONIC
-    #define CV_3_SOURCE   NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND 
-#endif
 
 // CCs will output CV scaled from the sent CC value, listening on n number CCx
 #define CC1_COMMAND     7    // 0...119

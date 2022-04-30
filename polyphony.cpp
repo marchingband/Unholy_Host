@@ -13,23 +13,23 @@ struct stack_t {
 
 uint8_t duo_voice_1_note = 0;
 uint8_t duo_voice_2_note = 0;
-uint8_t duo_stack[10] = {0};
 bool duo_voice_1_free = true;
 bool duo_voice_2_free = true;
+uint8_t duo_stack_buf[10] = {0};
 struct stack_t duo_stack = {
-    .stack = duo_stack,
+    .stack = duo_stack_buf,
     .pointer = 0,
 };
 
 uint8_t tri_voice_1_note = 0;
 uint8_t tri_voice_2_note = 0;
 uint8_t tri_voice_3_note = 0;
-uint8_t tri_stack[10] = {0};
 bool tri_voice_1_free = true;
 bool tri_voice_2_free = true;
 bool tri_voice_3_free = true;
+uint8_t tri_stack_buf[10] = {0};
 struct stack_t tri_stack = {
-    .stack = tri_stack,
+    .stack = tri_stack_buf,
     .pointer = 0,
 };
 
@@ -654,7 +654,10 @@ uint8_t pop_last(struct stack_t *data)
 uint8_t peek_last_duo(struct stack_t *data, uint8_t voice_1_note, uint8_t voice_2_note)
 {
     uint8_t note = data->stack[data->pointer - 1];
-    if(note == voice_1_note || note == voice_2_note)
+    if(
+        (note == voice_1_note) || 
+        (note == voice_2_note)
+    )
     {
         note = data->stack[data->pointer - 2];
     }
@@ -664,7 +667,11 @@ uint8_t peek_last_duo(struct stack_t *data, uint8_t voice_1_note, uint8_t voice_
 uint8_t peek_last_tri(struct stack_t *data, uint8_t voice_1_note, uint8_t voice_2_note, uint8_t voice_3_note)
 {
     uint8_t note = data->stack[data->pointer - 1];
-    if((note == voice_1_note) || (note == voice_2_note) || (note == voice_3_note))
+    if(
+        (note == voice_1_note) || 
+        (note == voice_2_note) || 
+        (note == voice_3_note)
+    )
     {
         note = data->stack[data->pointer - 2];
     }
