@@ -2,6 +2,7 @@
 #include "Arduino.h"
 #include <math.h>
 #include "calibration.h"
+#include "config.h"
 
 // #define CALIBRATION_MODE
 // #define DEBUG

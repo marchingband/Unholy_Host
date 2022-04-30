@@ -10,7 +10,7 @@
 #define DAC_3_MAX 2911.0
 #define DAC_V_MAX 4.935
 
-#define NUM_NOTES_V_OCT_ (V_OCT_MAX - V_OCT_MIN)// 60 // A0 to G#4
+#define NUM_NOTES_V_OCT (V_OCT_MAX - V_OCT_MIN)// 60 // A0 to G#4
 #define CALIBRATION_INTERVAL 5 // perfect 4th
 #define NUM_CALIBRATION_POINTS (( NUM_NOTES_V_OCT / CALIBRATION_INTERVAL ) + 1 ) // 13
 

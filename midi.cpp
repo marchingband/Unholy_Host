@@ -3,7 +3,6 @@
 #include "midi.h"
 #include "dac.h"
 #include "gates.h"
-#include "cv.h"
 #include "handlers.h"
 #include "config.h"
 #include "constants.h"

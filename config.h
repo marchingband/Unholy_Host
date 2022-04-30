@@ -3,7 +3,7 @@
 
 #include "constants.h"
 
-#define DUOPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
+#define MONOPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
 
 #if defined(MONOPHONIC)
     #define CV_1_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND
@@ -21,19 +21,19 @@
 #define CV_3_SCALE V_OCT  // V_OCT || HZ_V
 
 // CCs will output CV scaled from the sent CC value, listening on n number CCx
-#define CC1_COMMAND     7    // 0...119
-#define CC2_COMMAND     10   // 0...119
-#define CC3_COMMAND     11   // 0...119
+#define CC1_COMMAND      7    // 0...119
+#define CC2_COMMAND      10   // 0...119
+#define CC3_COMMAND      11   // 0...119
 
 // clocks will send trigger every n number of midi clocks (there are 24 midi clocks per beat)
-#define CLOCK_1_DIVIDER 12   // 1...infinity
-#define CLOCK_2_DIVIDER 24   // 1...infinity
-#define CLOCK_3_DIVIDER 48   // 1...infinity
+#define CLOCK_1_DIVIDER  12   // 1...infinity
+#define CLOCK_2_DIVIDER  24   // 1...infinity
+#define CLOCK_3_DIVIDER  48   // 1...infinity
 
 // resets will send trigger on MIDI_START, MIDI_STOP, MIDI CONTINUE, and every n number of beats (where 24 midi clocks is 1 beat)
-#define RESET_1_BEATS   4    // 0(just at the start)...infinity
-#define RESET_2_BEATS   16   // 0(just at the start)...infinity
-#define RESET_3_BEATS   32   // 0(just at the start)...infinity
+#define RESET_1_BEATS    4    // 0(just at the start)...infinity
+#define RESET_2_BEATS    16   // 0(just at the start)...infinity
+#define RESET_3_BEATS    32   // 0(just at the start)...infinity
 
 // #define USE_SUSTAIN
 

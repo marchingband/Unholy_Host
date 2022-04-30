@@ -35,6 +35,7 @@ struct stack_t tri_stack = {
 
 void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
+#ifdef DUOPHONIC
     switch(CV_1_AND_2_MODE){
         case HIGHEST:
         {
@@ -296,10 +297,12 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
             break;
         }
     }
+#endif
 }
 
 void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
+#ifdef TRIPHONIC
     switch(CV_1_AND_2_AND_3_MODE){
         case HIGHEST:
         {
@@ -597,11 +600,12 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
             break;
         }
     }
+#endif
 }
 
 void push_note(struct stack_t *data, uint8_t note)
 {
-    if(stack->pointer < 10)
+    if(data->pointer < 10)
     {
         data->stack[data->pointer] = note;
         data->pointer++;
