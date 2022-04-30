@@ -15,6 +15,7 @@ struct gate_t gates[8];
 unsigned long clock_cnt = 0;
 unsigned long last_start = 0;
 unsigned long beat_cnt = 0;
+bool playing = false;
 
 void cv_1_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
@@ -259,7 +260,11 @@ void gates_handle_clock(uint8_t channel)
         }
     }
     unsigned long clock_position = clock_cnt - last_start;
-    if((clock_position > 0) && (clock_poition % 24 == 0)) // this is a beat and not the first
+    if(
+        playing &&
+        (clock_position > 0) && 
+        (clock_poition % 24 == 0)
+    ) // this is a beat and not the first
     {
         beat_cnt++;
         if((RESET_1_BEATS > 0) && (beat_cnt % RESET_1_BEATS == 0))
@@ -297,6 +302,19 @@ void gates_handle_clock(uint8_t channel)
 
 void gates_handle_transport(uint8_t channel, uint8_t code)
 {
+    if(
+        (code == MIDI_START) ||
+        (code == MIDI_CONTINUE)
+    )
+    {
+        last_start = clock_cnt;
+        beat_cnt = 0;
+        playing = true;
+    }
+    else if(code == MIDI_STOP)
+    {
+        playing = false;
+    }
     for(int i=0; i<8; i++)
     {
         if(gates[i].source == TRANSPORT)

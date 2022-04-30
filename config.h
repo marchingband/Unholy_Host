@@ -40,7 +40,6 @@
 #define RESET_2_BEATS   16   // 0(just at the start)...infinity
 #define RESET_3_BEATS   32   // 0(just at the start)...infinity
 
-
 // #define USE_SUSTAIN
 
 // TRANSPORT sets gate high after MIDI_START or MIDI_CONTINUE, and low after MIDI_STOP
