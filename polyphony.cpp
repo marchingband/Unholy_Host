@@ -619,7 +619,6 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                             tri_voice_1_note = c;
                         }
                         note_to_dac(0, tri_voice_1_note, CV_1_SCALE == V_OCT);
-                        gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
                     }
                     else
                     {
@@ -659,12 +658,11 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                             tri_voice_2_note = c;
                         }
                         note_to_dac(0, tri_voice_2_note, CV_1_SCALE == V_OCT);
-                        gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                     }
                     else
                     {
                         tri_voice_2_free = true;
-                        gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
+                        gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                     }
                 }
                 else if(tri_voice_3_note == note)
@@ -699,12 +697,11 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                             tri_voice_3_note = c;
                         }
                         note_to_dac(0, tri_voice_3_note, CV_1_SCALE == V_OCT);
-                        gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                     }
                     else
                     {
                         tri_voice_3_free = true;
-                        gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
+                        gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                     }
                 }
             }

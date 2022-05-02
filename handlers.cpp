@@ -108,7 +108,7 @@ void triphonic_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocit
 
 void gates_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
-    Serial1.println("gates_handle_note_on_off");
+    // Serial1.println("gates_handle_note_on_off");
     for(int i=0; i<8; i++)
     {
         if((gates[i].source == NOTE_ON_OFF) && (gates[i].note == note))
