@@ -215,9 +215,9 @@ void gates_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
     for(int i=0; i<8; i++)
     {
         if(
-            ((gates[i].source == CC1) && (CC1_COMMAND == cc)) ||
-            ((gates[i].source == CC2) && (CC2_COMMAND == cc)) ||
-            ((gates[i].source == CC3) && (CC2_COMMAND == cc))
+            ((gates[i].source == CC1_HI_LOW) && (CC1_COMMAND == cc)) ||
+            ((gates[i].source == CC2_HI_LOW) && (CC2_COMMAND == cc)) ||
+            ((gates[i].source == CC3_HI_LOW) && (CC3_COMMAND == cc))
         )
         {
             if(val > 63) // on
