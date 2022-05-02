@@ -108,6 +108,7 @@ void handle_midi(uint8_t *msg)
         }
         default: break;
     }
+    gates_update();
 }
 
 void handle_realtime_midi(uint8_t *msg)
@@ -138,6 +139,7 @@ void handle_realtime_midi(uint8_t *msg)
         }
         default: break;
     }
+    gates_update();
 }
 
 void midi_host_parse(uint8_t in)

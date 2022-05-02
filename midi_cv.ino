@@ -20,6 +20,7 @@ void test_lights(void)
   {
     int even = cnt++ % 2 == 0;
     gate_set(cnt2, even);
+    gates_update();
     cnt2 = even ? cnt2 : cnt2 + 1;
     rgb_set_color(cnt < 3 ? cnt * (128 / 16) : 0, cnt < 6 ? cnt * (128 / 16) : 0, cnt < 9 ? cnt * (128 / 16) : 0); // test bright white
     delay(100);

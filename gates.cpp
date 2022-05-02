@@ -13,7 +13,13 @@ void gates_init()
 
 void gate_set(uint8_t pin, const uint8_t value)
 {
-    sr->set(pin, value);
+    // sr->set(pin, value);
+    sr->setNoUpdate(pin, value);
+}
+
+void gates_update()
+{
+    sr->updateRegisters();
 }
 
 uint8_t gate_get(uint8_t pin)
