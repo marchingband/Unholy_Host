@@ -265,6 +265,56 @@ void gates_handle_clock()
             }
         }
     }
+    if(clock_cnt % CLOCK_4_DIVIDER == 0)
+    {
+        for(int i=0; i<8; i++)
+        {
+            if(gates[i].source == CLOCK_4)
+            {
+                trigger_start(i);
+            }
+        }
+    }
+    if(clock_cnt % CLOCK_5_DIVIDER == 0)
+    {
+        for(int i=0; i<8; i++)
+        {
+            if(gates[i].source == CLOCK_5)
+            {
+                trigger_start(i);
+            }
+        }
+    }
+    if(clock_cnt % CLOCK_6_DIVIDER == 0)
+    {
+        for(int i=0; i<8; i++)
+        {
+            if(gates[i].source == CLOCK_6)
+            {
+                trigger_start(i);
+            }
+        }
+    }
+    if(clock_cnt % CLOCK_7_DIVIDER == 0)
+    {
+        for(int i=0; i<8; i++)
+        {
+            if(gates[i].source == CLOCK_7)
+            {
+                trigger_start(i);
+            }
+        }
+    }
+    if(clock_cnt % CLOCK_8_DIVIDER == 0)
+    {
+        for(int i=0; i<8; i++)
+        {
+            if(gates[i].source == CLOCK_8)
+            {
+                trigger_start(i);
+            }
+        }
+    }
     unsigned long clock_position = clock_cnt - last_start;
     if(
         playing &&
