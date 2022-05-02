@@ -1,6 +1,7 @@
 #include <MCP48xx.h>
 #include "Arduino.h"
 #include <math.h>
+#include "constants.h"
 #include "calibration.h"
 #include "config.h"
 
@@ -91,6 +92,10 @@ uint16_t midi_to_hz_v(uint8_t num_dac, uint8_t note)
 
 void note_to_dac(uint8_t num_dac, uint8_t note, bool is_v_oct)
 {
+    char log[20];
+    sprintf(log, "dac%d note-%d", num_dac, note);
+    Serial1.println(log);
+
     uint16_t val = is_v_oct ? midi_to_v_oct(num_dac, note) : midi_to_hz_v(num_dac, note);
 
     if(num_dac == 0)
@@ -109,8 +114,13 @@ void note_to_dac(uint8_t num_dac, uint8_t note, bool is_v_oct)
 
 void velocity_to_dac(uint8_t num_dac, uint8_t velocity)
 {
-    double volts = ((double)(velocity) * 4.935) / 127.0;
+    double velocity_d = (double)velocity;
+    double volts = (velocity_d * 4.935) / 127.0;
     uint16_t val = volts_to_dac_val(volts, num_dac);
+
+    // char log1[100];
+    // sprintf(log1, "velocity_to_dac velocity:%d val:%d volts:%f velocity_d:%f", velocity ,val, volts, velocity_d);
+    // Serial1.println(log1);
 
     if(num_dac == 0)
     {
@@ -128,8 +138,14 @@ void velocity_to_dac(uint8_t num_dac, uint8_t velocity)
 
 void cc_to_dac(uint8_t num_dac, uint8_t value)
 {
-    double volts = ((double)(value) * 4.935) / 127.0;
+    double value_d = (double)value;
+    double volts = (value_d * 4.935) / 127.0;
     uint16_t val = volts_to_dac_val(volts, num_dac);
+
+    // char log1[100];
+    // sprintf(log1, "cc_to_dac value:%d val:%d volts:%f value_d:%f", value ,val, volts, value_d);
+    // Serial1.println(log1);
+    
     if(num_dac == 0)
     {
         dac_set_chan_one(val);

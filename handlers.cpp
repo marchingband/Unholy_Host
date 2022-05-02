@@ -4,6 +4,7 @@
 #include "constants.h"
 #include "dac.h"
 #include "gates.h"
+#include "polyphony.h"
 
 struct gate_t {
     int source;
@@ -12,6 +13,7 @@ struct gate_t {
 };
 
 struct gate_t gates[8];
+
 unsigned long clock_cnt = 0;
 unsigned long last_start = 0;
 unsigned long beat_cnt = 0;
@@ -26,7 +28,7 @@ void cv_1_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bo
     }
     else if((CV_1_SOURCE == VELOCITY) && is_note_on)
     {
-        velocity_to_dac(0, velocity, CV_1_SCALE == V_OCT);
+        velocity_to_dac(0, velocity);
     }
 #endif
 }
@@ -40,7 +42,10 @@ void cv_2_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bo
     }
     else if((CV_2_SOURCE == VELOCITY) && is_note_on)
     {
-        velocity_to_dac(1, velocity, CV_2_SCALE == V_OCT);
+        // char log[30];
+        // sprintf(log, "cv_2_handle_note_on_off vel-%d", velocity);
+        // Serial1.println(log);
+        velocity_to_dac(1, velocity);
     }
 #endif
 }
@@ -54,7 +59,7 @@ void cv_3_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bo
     }
     else if((CV_3_SOURCE == VELOCITY) && is_note_on)
     {
-        velocity_to_dac(2, velocity, CV_3_SCALE == V_OCT);
+        velocity_to_dac(2, velocity);
     }
 #endif
 }
@@ -67,16 +72,16 @@ void duophonic_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocit
         ((note < V_OCT_MIN) || (note > V_OCT_MAX))
     )
     {
-        return
+        return;
     }
     if(
         (CV_1_SCALE == HZ_V) &&
         ((note < HZ_V_MIN) || (note > HZ_V_MAX))
     )
     {
-        return
+        return;
     }
-    duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on);
+    duophonic_process_event(channel, note, velocity, is_note_on);
 #endif
 }
 
@@ -88,14 +93,14 @@ void triphonic_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocit
         ((note < V_OCT_MIN) || (note > V_OCT_MAX))
     )
     {
-        return
+        return;
     }
     if(
         (CV_1_SCALE == HZ_V) &&
         ((note < HZ_V_MIN) || (note > HZ_V_MAX))
     )
     {
-        return
+        return;
     }
     triphonic_process_event(channel, note, velocity, is_note_on);
 #endif
@@ -103,6 +108,7 @@ void triphonic_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocit
 
 void gates_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
+    Serial1.println("gates_handle_note_on_off");
     for(int i=0; i<8; i++)
     {
         if((gates[i].source == NOTE_ON_OFF) && (gates[i].note == note))
@@ -164,6 +170,7 @@ void gates_handle_triphonic_note_on_off(uint8_t channel, uint8_t voice, bool is_
 
 void cv_1_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
 {
+#ifdef MONOPHONIC
     if(
         ((CV_1_SOURCE == CC1) && (CC1_COMMAND == cc)) ||
         ((CV_1_SOURCE == CC2) && (CC2_COMMAND == cc)) ||
@@ -172,10 +179,12 @@ void cv_1_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
     {
         cc_to_dac(0, val);
     }
+#endif
 }
 
 void cv_2_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
 {
+#ifdef MONOPHONIC
     if(
         ((CV_2_SOURCE == CC1) && (CC1_COMMAND == cc)) ||
         ((CV_2_SOURCE == CC2) && (CC2_COMMAND == cc)) ||
@@ -184,10 +193,12 @@ void cv_2_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
     {
         cc_to_dac(1, val);
     }
+#endif
 }
 
 void cv_3_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
 {
+#ifndef TRIPHONIC
     if(
         ((CV_3_SOURCE == CC1) && (CC1_COMMAND == cc)) ||
         ((CV_3_SOURCE == CC2) && (CC2_COMMAND == cc)) ||
@@ -196,6 +207,7 @@ void cv_3_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
     {
         cc_to_dac(2, val);
     }
+#endif
 }
 
 void gates_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
@@ -220,7 +232,7 @@ void gates_handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
     }
 }
 
-void gates_handle_clock(uint8_t channel)
+void gates_handle_clock()
 {
     clock_cnt++;
     if(clock_cnt % CLOCK_1_DIVIDER == 0)
@@ -294,7 +306,7 @@ void gates_handle_clock(uint8_t channel)
     }
 }
 
-void gates_handle_transport(uint8_t channel, uint8_t code)
+void gates_handle_transport(uint8_t code)
 {
     if(
         (code == MIDI_START) ||
@@ -345,49 +357,49 @@ void init_handlers(void)
     gates[0].invert = 0;
 #endif
     gates[1].source = GATE_2_SOURCE;
-    gates[1].note = GATE_1_NOTE;
+    gates[1].note = GATE_2_NOTE;
 #ifdef GATE_2_INVERT
     gates[1].invert = 1;
 #else
     gates[1].invert = 0;
 #endif
     gates[2].source = GATE_3_SOURCE;
-    gates[2].note = GATE_1_NOTE;
+    gates[2].note = GATE_3_NOTE;
 #ifdef GATE_3_INVERT
     gates[2].invert = 1;
 #else
     gates[2].invert = 0;
 #endif
     gates[3].source = GATE_4_SOURCE;
-    gates[3].note = GATE_1_NOTE;
+    gates[3].note = GATE_4_NOTE;
 #ifdef GATE_4_INVERT
     gates[3].invert = 1;
 #else
     gates[3].invert = 0;
 #endif
     gates[4].source = GATE_5_SOURCE;
-    gates[4].note = GATE_1_NOTE;
+    gates[4].note = GATE_5_NOTE;
 #ifdef GATE_5_INVERT
     gates[4].invert = 1;
 #else
     gates[4].invert = 0;
 #endif
     gates[5].source = GATE_6_SOURCE;
-    gates[5].note = GATE_1_NOTE;
+    gates[5].note = GATE_6_NOTE;
 #ifdef GATE_6_INVERT
     gates[5].invert = 1;
 #else
     gates[5].invert = 0;
 #endif
     gates[6].source = GATE_7_SOURCE;
-    gates[6].note = GATE_1_NOTE;
+    gates[6].note = GATE_7_NOTE;
 #ifdef GATE_7_INVERT
     gates[6].invert = 1;
 #else
     gates[6].invert = 0;
 #endif
     gates[7].source = GATE_8_SOURCE;
-    gates[7].note = GATE_1_NOTE;
+    gates[7].note = GATE_8_NOTE;
 #ifdef GATE_8_INVERT
     gates[7].invert = 1;
 #else

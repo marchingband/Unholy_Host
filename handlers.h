@@ -13,8 +13,8 @@ void cv_1_handle_cc(uint8_t channel, uint8_t cc, uint8_t val);
 void cv_2_handle_cc(uint8_t channel, uint8_t cc, uint8_t val);
 void cv_3_handle_cc(uint8_t channel, uint8_t cc, uint8_t val);
 void gates_handle_cc(uint8_t channel, uint8_t cc, uint8_t val);
-void gates_handle_clock(uint8_t channel);
-void gates_handle_transport(uint8_t channel, uint8_t code);
+void gates_handle_clock(void);
+void gates_handle_transport(uint8_t code);
 void init_handlers(void);
 
 #endif

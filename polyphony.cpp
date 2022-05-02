@@ -52,7 +52,7 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                 {
                     duo_voice_2_free = false;
                     duo_voice_2_note = note;
-                    note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, note, CV_1_SCALE == V_OCT);
                     gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                 }
                 else if((note > duo_voice_1_note) && (note > duo_voice_2_note)) // new is highest
@@ -61,7 +61,7 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     {
                         push_note(&duo_stack, duo_voice_2_note);
                         duo_voice_2_note = note;
-                        note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                        note_to_dac(1, note, CV_1_SCALE == V_OCT);
                         gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                     }
                     else
@@ -83,7 +83,7 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                 {
                     push_note(&duo_stack, duo_voice_2_note);
                     duo_voice_2_note = note;
-                    note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, note, CV_1_SCALE == V_OCT);
                     gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                 }
                 else // its the lowest
@@ -112,7 +112,7 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     if(duo_stack.pointer > 0)
                     {
                         duo_voice_2_note = pop_highest(&duo_stack);
-                        note_to_dac(1, duo_voice_2_note, CV_2_SCALE == V_OCT);
+                        note_to_dac(1, duo_voice_2_note, CV_1_SCALE == V_OCT);
                         gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                     }
                     else
@@ -143,7 +143,7 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                 {
                     duo_voice_2_free = false;
                     duo_voice_2_note = note;
-                    note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, note, CV_1_SCALE == V_OCT);
                     gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                 }
                 else if((note < duo_voice_1_note) && (note < duo_voice_2_note)) // new is lowest
@@ -152,7 +152,7 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     {
                         push_note(&duo_stack, duo_voice_2_note);
                         duo_voice_2_note = note;
-                        note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                        note_to_dac(1, note, CV_1_SCALE == V_OCT);
                         gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                     }
                     else
@@ -174,7 +174,7 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                 {
                     push_note(&duo_stack, duo_voice_2_note);
                     duo_voice_2_note = note;
-                    note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, note, CV_1_SCALE == V_OCT);
                     gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                 }
                 else // its the lowest
@@ -203,7 +203,7 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     if(duo_stack.pointer > 0)
                     {
                         duo_voice_2_note = pop_lowest(&duo_stack);
-                        note_to_dac(1, duo_voice_2_note, CV_2_SCALE == V_OCT);
+                        note_to_dac(1, duo_voice_2_note, CV_1_SCALE == V_OCT);
                         gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                     }
                     else
@@ -236,25 +236,27 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     duo_voice_2_free = false;
                     duo_voice_2_note = note;
                     push_note(&duo_stack, note);
-                    note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, note, CV_1_SCALE == V_OCT);
                     gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                 }
                 else
                 {
-                    uint8_t last_note = peek_last(&duo_stack);
+                    uint8_t last_note = pop_last(&duo_stack);
                     if(last_note == duo_voice_1_note)
                     {
+                        duo_voice_2_note = note;
+                        push_note(&duo_stack, last_note);
+                        push_note(&duo_stack, note);
+                        note_to_dac(1, note, CV_1_SCALE == V_OCT);
+                        gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
+                    }
+                    else
+                    {
                         duo_voice_1_note = note;
+                        push_note(&duo_stack, last_note);
                         push_note(&duo_stack, note);
                         note_to_dac(0, note, CV_1_SCALE == V_OCT);
                         gates_handle_duophonic_note_on_off(channel, 1, is_note_on);
-                    }
-                    else if(last_note == duo_voice_2_note)
-                    {
-                        duo_voice_2_note = note;
-                        push_note(&duo_stack, note);
-                        note_to_dac(1, note, CV_2_SCALE == V_OCT);
-                        gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
                     }
                 }
             }
@@ -262,12 +264,27 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
             {
                 if(duo_voice_1_note == note)
                 {
-                    remove_note(%duo_stack, note);
+                    remove_note(&duo_stack, note);
                     if(duo_stack.pointer > 1)
                     {
-                        duo_voice_1_note = peek_last(&duo_stack);
-                        note_to_dac(0, duo_voice_1_note, CV_1_SCALE == V_OCT);
-                        gates_handle_duophonic_note_on_off(channel, 1, is_note_on);
+                        uint8_t a = pop_last(&duo_stack);
+                        uint8_t b = pop_last(&duo_stack);
+                        if(a == duo_voice_2_note)
+                        {
+                            push_note(&duo_stack, b);
+                            push_note(&duo_stack, a);
+                            duo_voice_1_note = b;
+                            note_to_dac(0, b, CV_1_SCALE == V_OCT);
+                            gates_handle_duophonic_note_on_off(channel, 1, is_note_on);
+                        }
+                        else
+                        {
+                            push_note(&duo_stack, b);
+                            push_note(&duo_stack, a);
+                            duo_voice_1_note = a;
+                            note_to_dac(0, a, CV_1_SCALE == V_OCT);
+                            gates_handle_duophonic_note_on_off(channel, 1, is_note_on);
+                        }
                     }
                     else
                     {
@@ -277,16 +294,32 @@ void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                 }
                 else if(duo_voice_2_note == note)
                 {
+                    remove_note(&duo_stack, note);
                     if(duo_stack.pointer > 1)
                     {
-                        duo_voice_2_note = peek_last(&duo_stack);
-                        note_to_dac(1, duo_voice_2_note, CV_2_SCALE == V_OCT);
-                        gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
+                        uint8_t a = pop_last(&duo_stack);
+                        uint8_t b = pop_last(&duo_stack);
+                        if(a == duo_voice_1_note)
+                        {
+                            push_note(&duo_stack, b);
+                            push_note(&duo_stack, a);
+                            duo_voice_2_note = b;
+                            note_to_dac(1, b, CV_1_SCALE == V_OCT);
+                            gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
+                        }
+                        else
+                        {
+                            push_note(&duo_stack, b);
+                            push_note(&duo_stack, a);
+                            duo_voice_2_note = a;
+                            note_to_dac(1, a, CV_1_SCALE == V_OCT);
+                            gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
+                        }
                     }
                     else
                     {
-                        duo_voice_2_free = true;
-                        gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
+                        duo_voice_1_free = true;
+                        gates_handle_duophonic_note_on_off(channel, 1, is_note_on);
                     }
                 }
                 else
@@ -321,7 +354,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     tri_voice_2_free = false;
                     tri_voice_2_note = note;
                     push_note(&tri_stack, note);
-                    note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                 }
                 else if(tri_voice_3_free)
@@ -329,7 +362,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     tri_voice_3_free = false;
                     tri_voice_3_note = note;
                     push_note(&tri_stack, note);
-                    note_to_dac(2, note, CV_3_SCALE == V_OCT);
+                    note_to_dac(2, note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                 }
                 else
@@ -341,11 +374,11 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
 
                     tri_voice_2_note = pop_highest(&tri_stack);
-                    note_to_dac(1, tri_voice_2_note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, tri_voice_2_note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
 
                     tri_voice_3_note = pop_highest(&tri_stack);
-                    note_to_dac(2, tri_voice_3_note, CV_3_SCALE == V_OCT);
+                    note_to_dac(2, tri_voice_3_note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                 }
             }
@@ -370,7 +403,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     if(tri_stack.pointer > 0)
                     {
                         tri_voice_2_note = pop_highest(&tri_stack);
-                        note_to_dac(1, tri_voice_2_note, CV_2_SCALE == V_OCT);
+                        note_to_dac(1, tri_voice_2_note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                     }
                     else
@@ -384,7 +417,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     if(tri_stack.pointer > 0)
                     {
                         tri_voice_3_note = pop_highest(&tri_stack);
-                        note_to_dac(2, tri_voice_3_note, CV_3_SCALE == V_OCT);
+                        note_to_dac(2, tri_voice_3_note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                     }
                     else
@@ -417,7 +450,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     tri_voice_2_free = false;
                     tri_voice_2_note = note;
                     push_note(&tri_stack, note);
-                    note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                 }
                 else if(tri_voice_3_free)
@@ -425,7 +458,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     tri_voice_3_free = false;
                     tri_voice_3_note = note;
                     push_note(&tri_stack, note);
-                    note_to_dac(2, note, CV_3_SCALE == V_OCT);
+                    note_to_dac(2, note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                 }
                 else
@@ -435,10 +468,10 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     note_to_dac(0, tri_voice_1_note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
                     tri_voice_2_note = pop_lowest(&tri_stack);
-                    note_to_dac(1, tri_voice_2_note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, tri_voice_2_note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                     tri_voice_3_note = pop_lowest(&tri_stack);
-                    note_to_dac(2, tri_voice_3_note, CV_3_SCALE == V_OCT);
+                    note_to_dac(2, tri_voice_3_note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                 }
             }
@@ -463,7 +496,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     if(tri_stack.pointer > 0)
                     {
                         tri_voice_2_note = pop_lowest(&tri_stack);
-                        note_to_dac(1, tri_voice_2_note, CV_2_SCALE == V_OCT);
+                        note_to_dac(1, tri_voice_2_note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                     }
                     else
@@ -477,7 +510,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     if(tri_stack.pointer > 0)
                     {
                         tri_voice_3_note = pop_lowest(&tri_stack);
-                        note_to_dac(2, tri_voice_3_note, CV_3_SCALE == V_OCT);
+                        note_to_dac(2, tri_voice_3_note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                     }
                     else
@@ -510,7 +543,7 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     tri_voice_2_free = false;
                     tri_voice_2_note = note;
                     push_note(&tri_stack, note);
-                    note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                    note_to_dac(1, note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                 }
                 else if(tri_voice_3_free)
@@ -518,43 +551,73 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                     tri_voice_3_free = false;
                     tri_voice_3_note = note;
                     push_note(&tri_stack, note);
-                    note_to_dac(2, note, CV_3_SCALE == V_OCT);
+                    note_to_dac(2, note, CV_1_SCALE == V_OCT);
                     gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                 }
                 else
                 {
-                    uint8_t last_note = peek_last(&tri_stack);
-                    if(last_note == tri_voice_1_note)
+                    // uint8_t last_note = peek_last_tri(&tri_stack);
+                    uint8_t a = pop_last(&tri_stack);
+                    uint8_t b = pop_last(&tri_stack);
+                    uint8_t c = pop_last(&tri_stack);
+                    push_note(&tri_stack, c);
+                    push_note(&tri_stack, b);
+                    push_note(&tri_stack, a);
+                    push_note(&tri_stack, note);
+                    if(c == tri_voice_1_note)
                     {
                         tri_voice_1_note = note;
-                        push_note(&tri_stack, note);
                         note_to_dac(0, note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
                     }
-                    else if(last_note == tri_voice_2_note)
+                    else if(c == tri_voice_2_note)
                     {
                         tri_voice_2_note = note;
-                        push_note(&tri_stack, note);
-                        note_to_dac(1, note, CV_2_SCALE == V_OCT);
+                        note_to_dac(1, note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                     }
-                    else if(last_note == tri_voice_3_note)
+                    else if(c == tri_voice_3_note)
                     {
                         tri_voice_3_note = note;
-                        push_note(&tri_stack, note);
-                        note_to_dac(2, note, CV_3_SCALE == V_OCT);
+                        note_to_dac(2, note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                     }
                 }
             }
             else // it's note off
             {
+                remove_note(&tri_stack, note);
                 if(tri_voice_1_note == note)
                 {
-                    remove_note(%tri_stack, note);
-                    if(tri_stack.pointer > 1)
+                    if(tri_stack.pointer > 2)
                     {
-                        tri_voice_1_note = peek_last(&tri_stack);
+                        uint8_t a = pop_last(&tri_stack);
+                        uint8_t b = pop_last(&tri_stack);
+                        uint8_t c = pop_last(&tri_stack);
+                        push_note(&tri_stack, c);
+                        push_note(&tri_stack, b);
+                        push_note(&tri_stack, a);
+                        if(
+                            (tri_voice_2_note != a) &&
+                            (tri_voice_3_note != a)
+                        )
+                        {
+                            tri_voice_1_note = a;
+                        }
+                        else if(
+                            (tri_voice_2_note != b) &&
+                            (tri_voice_3_note != b)
+                        )
+                        {
+                            tri_voice_1_note = b;
+                        }
+                        else if(
+                            (tri_voice_2_note != c) &&
+                            (tri_voice_3_note != c)
+                        )
+                        {
+                            tri_voice_1_note = c;
+                        }
                         note_to_dac(0, tri_voice_1_note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
                     }
@@ -566,35 +629,83 @@ void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bo
                 }
                 else if(tri_voice_2_note == note)
                 {
-                    if(tri_stack.pointer > 1)
+                    if(tri_stack.pointer > 2)
                     {
-                        tri_voice_2_note = peek_last(&tri_stack);
-                        note_to_dac(1, tri_voice_2_note, CV_2_SCALE == V_OCT);
+                        uint8_t a = pop_last(&tri_stack);
+                        uint8_t b = pop_last(&tri_stack);
+                        uint8_t c = pop_last(&tri_stack);
+                        push_note(&tri_stack, c);
+                        push_note(&tri_stack, b);
+                        push_note(&tri_stack, a);
+                        if(
+                            (tri_voice_1_note != a) &&
+                            (tri_voice_3_note != a)
+                        )
+                        {
+                            tri_voice_2_note = a;
+                        }
+                        else if(
+                            (tri_voice_1_note != b) &&
+                            (tri_voice_3_note != b)
+                        )
+                        {
+                            tri_voice_2_note = b;
+                        }
+                        else if(
+                            (tri_voice_1_note != c) &&
+                            (tri_voice_3_note != c)
+                        )
+                        {
+                            tri_voice_2_note = c;
+                        }
+                        note_to_dac(0, tri_voice_2_note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
                     }
                     else
                     {
                         tri_voice_2_free = true;
-                        gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
+                        gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
                     }
                 }
                 else if(tri_voice_3_note == note)
                 {
-                    if(tri_stack.pointer > 1)
+                    if(tri_stack.pointer > 2)
                     {
-                        tri_voice_3_note = peek_last(&tri_stack);
-                        note_to_dac(2, tri_voice_3_note, CV_3_SCALE == V_OCT);
+                        uint8_t a = pop_last(&tri_stack);
+                        uint8_t b = pop_last(&tri_stack);
+                        uint8_t c = pop_last(&tri_stack);
+                        push_note(&tri_stack, c);
+                        push_note(&tri_stack, b);
+                        push_note(&tri_stack, a);
+                        if(
+                            (tri_voice_1_note != a) &&
+                            (tri_voice_2_note != a)
+                        )
+                        {
+                            tri_voice_3_note = a;
+                        }
+                        else if(
+                            (tri_voice_1_note != b) &&
+                            (tri_voice_2_note != b)
+                        )
+                        {
+                            tri_voice_3_note = b;
+                        }
+                        else if(
+                            (tri_voice_1_note != c) &&
+                            (tri_voice_2_note != c)
+                        )
+                        {
+                            tri_voice_3_note = c;
+                        }
+                        note_to_dac(0, tri_voice_3_note, CV_1_SCALE == V_OCT);
                         gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
                     }
                     else
                     {
                         tri_voice_3_free = true;
-                        gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
+                        gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
                     }
-                }
-                else
-                {
-                    remove_note(&tri_stack, note);
                 }
             }
             break;
@@ -655,12 +766,12 @@ uint8_t pop_last(struct stack_t *data)
     return note;
 }
 
-uint8_t peek_last_duo(struct stack_t *data, uint8_t voice_1_note, uint8_t voice_2_note)
+uint8_t peek_last_duo(struct stack_t *data)
 {
     uint8_t note = data->stack[data->pointer - 1];
     if(
-        (note == voice_1_note) || 
-        (note == voice_2_note)
+        (note == duo_voice_1_note) || 
+        (note == duo_voice_2_note)
     )
     {
         note = data->stack[data->pointer - 2];
@@ -668,13 +779,13 @@ uint8_t peek_last_duo(struct stack_t *data, uint8_t voice_1_note, uint8_t voice_
     return note;
 }
 
-uint8_t peek_last_tri(struct stack_t *data, uint8_t voice_1_note, uint8_t voice_2_note, uint8_t voice_3_note)
+uint8_t peek_last_tri(struct stack_t *data)
 {
     uint8_t note = data->stack[data->pointer - 1];
     if(
-        (note == voice_1_note) || 
-        (note == voice_2_note) || 
-        (note == voice_3_note)
+        (note == tri_voice_1_note) || 
+        (note == tri_voice_2_note) || 
+        (note == tri_voice_3_note)
     )
     {
         note = data->stack[data->pointer - 2];

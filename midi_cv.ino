@@ -6,6 +6,7 @@
 #include "dac.h"
 #include "calibration.h"
 #include "rgb_led.h"
+#include "handlers.h"
 
 #define USB_MODE_SELECT_PIN 5
 
@@ -23,7 +24,6 @@ void test_lights(void)
     rgb_set_color(cnt < 3 ? cnt * (128 / 16) : 0, cnt < 6 ? cnt * (128 / 16) : 0, cnt < 9 ? cnt * (128 / 16) : 0); // test bright white
     delay(100);
   }
-
 }
 
 void setup()
@@ -41,13 +41,19 @@ void setup()
 
   // start the shift register
   gates_init();
+
+  // blink
   test_lights();
   
+  // build the dac just-notes LUT
+  init_just_dac_vals();
+
+  // build the midi event handlers for gates
+  init_handlers();
+
   // start the dac
-  // init_just_dac_vals();
   dac_init();
-  test_dac();
-  // dac_set_chan_all(100, 4096);  // test the dac : 4.04v 4096
+  // test_dac();
 
   // start the parser
   midi_parser_init();
