@@ -49,4 +49,5 @@ void clear_triggers(void)
             gate_eta[i] = 0;
         }
     }
+    gates_update();
 }
