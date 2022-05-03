@@ -120,6 +120,26 @@ void gates_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, b
     }
 }
 
+void gates_handle_monophonic_note_on_off(uint8_t channel, uint8_t note, bool is_note_on)
+{
+    // Serial1.println("gates_handle_monophonic_note_on_off");
+    for(int i=0; i<8; i++)
+    {
+        if(gates[i].source == MONOPHONIC_ON_OFF)
+        {
+            if(is_note_on)
+            {
+                gate_set(i, gates[i].invert ? 0 : 1);
+            }
+            else if(cvs[0].note == note) // only obey note off if its the current note
+            {
+                gate_set(i, gates[i].invert ? 1 : 0);
+            }
+        }
+    }
+}
+
+
 void gates_handle_duophonic_note_on_off(uint8_t channel, uint8_t voice, bool is_note_on)
 {
     for(int i=0; i<8; i++)

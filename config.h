@@ -3,7 +3,7 @@
 
 #include "constants.h"
 
-#define TRIPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
+#define MONOPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
 
 #if defined(MONOPHONIC)
     #define CV_1_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND
@@ -20,7 +20,7 @@
 #define CV_2_SCALE V_OCT  // V_OCT || HZ_V
 #define CV_3_SCALE V_OCT  // V_OCT || HZ_V
 
-#define PITCH_BEND_RANGE 2 // 0 to infinity (in semitones)
+#define PITCH_BEND_RANGE 12 // 0 to infinity (in semitones)
 
 // CCs will output CV scaled from the sent CC value, listening on n number CCx
 #define CC1_COMMAND      7    // 0...119
@@ -47,7 +47,7 @@
 // TRANSPORT sets gate high after MIDI_START or MIDI_CONTINUE, and low after MIDI_STOP
 // NOTE_ON_OFF sets gate high after NOTE_ON and low after NOTE_OFF, listening on n note number
 // CC1, CC2, CC3 will set gate high if value received on CCx (number defined above for each) is greater then 63, and low if less then 64
-#define GATE_1_SOURCE    CC1_HI_LOW // NOTE_ON_OFF || DUOPHONIC_ON_OFF_VOICE_1 || DUOPHONIC_ON_OFF_VOICE_2 || TRIPHONIC_ON_OFF_VOICE_1 || TRIPHONIC_ON_OFF_VOICE_2 || TRIPHONIC_ON_OFF_VOICE_3 || CC1_HI_LOW || CC2_HI_LOW || CC3_HI_LOW || RESET_1 || RESET_2 || RESET_3 || TRANSPORT || CLOCK_1 || CLOCK_2 || CLOCK_3 || CLOCK_4 || CLOCK_5 || CLOCK_6 || CLOCK_7 || CLOCK_8
+#define GATE_1_SOURCE    MONOPHONIC_ON_OFF // NOTE_ON_OFF || MONOPHONIC_ON_OFF || DUOPHONIC_ON_OFF_VOICE_1 || DUOPHONIC_ON_OFF_VOICE_2 || TRIPHONIC_ON_OFF_VOICE_1 || TRIPHONIC_ON_OFF_VOICE_2 || TRIPHONIC_ON_OFF_VOICE_3 || CC1_HI_LOW || CC2_HI_LOW || CC3_HI_LOW || RESET_1 || RESET_2 || RESET_3 || TRANSPORT || CLOCK_1 || CLOCK_2 || CLOCK_3 || CLOCK_4 || CLOCK_5 || CLOCK_6 || CLOCK_7 || CLOCK_8
 #define GATE_1_NOTE      C6          // C_2...G8 || 0...127
 // #define GATE_1_INVERT
 #define GATE_2_SOURCE    CLOCK_2 // NOTE_ON_OFF || DUOPHONIC_ON_OFF_VOICE_1 || DUOPHONIC_ON_OFF_VOICE_2 || TRIPHONIC_ON_OFF_VOICE_1 || TRIPHONIC_ON_OFF_VOICE_2 || TRIPHONIC_ON_OFF_VOICE_3 || CC1_HI_LOW || CC2_HI_LOW || CC3_HI_LOW || RESET_1 || RESET_2 || RESET_3 || TRANSPORT || CLOCK_1 || CLOCK_2 || CLOCK_3 || CLOCK_4 || CLOCK_5 || CLOCK_6 || CLOCK_7 || CLOCK_8

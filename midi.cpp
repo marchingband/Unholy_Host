@@ -29,6 +29,7 @@ void handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is
     cv_1_handle_note_on_off(channel, note, velocity, is_note_on);
     cv_2_handle_note_on_off(channel, note, velocity, is_note_on);
     cv_3_handle_note_on_off(channel, note, velocity, is_note_on);
+    gates_handle_monophonic_note_on_off(channel, note, is_note_on);
 #endif
 #ifdef DUOPHONIC
     duophonic_handle_note_on_off(channel, note, velocity, is_note_on);
