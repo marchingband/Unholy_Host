@@ -59,7 +59,8 @@ uint16_t volts_to_dac_val(double target_volts, uint8_t num_dac)
     double y_component = clamped_target_volts - dy_min;
     double val = dx_min + ( slope * y_component);
     double val_rnd = round(val);
-    uint16_t out = (uint16_t)val_rnd;
+    double val_rnd_clamp = val_rnd < 0.0 ? 0.0 : val_rnd;
+    uint16_t out = (uint16_t)val_rnd_clamp;
 
     // if(num_dac == 0)
     // {
