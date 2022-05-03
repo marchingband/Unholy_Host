@@ -70,6 +70,8 @@ void handle_transport(uint8_t code)
 void handle_pitch_bend(uint8_t channel, uint16_t pitch_bend)
 {
     // pitch_bend = 0 to 16,383 // 8192 is none
+    // Serial1.print("bend ");
+    // Serial1.println(pitch_bend);
     pitch_bend_state = pitch_bend;
     dacs_handle_pitch_bend();
 }

@@ -120,9 +120,9 @@ uint16_t midi_to_hz_v(uint8_t num_dac, uint8_t note)
 
 void note_to_dac(uint8_t num_dac, uint8_t note, bool is_v_oct)
 {
-    char log[20];
-    sprintf(log, "dac%d note-%d", num_dac, note);
-    Serial1.println(log);
+    // char log[20];
+    // sprintf(log, "dac%d note-%d", num_dac, note);
+    // Serial1.println(log);
 
     // update state
     cvs[num_dac].note = note;

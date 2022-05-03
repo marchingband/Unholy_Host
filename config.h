@@ -16,7 +16,7 @@
     #define CV_1_AND_2_AND_3_MODE  LAST // HIGHEST || LOWEST || LAST
 #endif
 
-#define CV_1_SCALE HZ_V  // V_OCT || HZ_V  (CV_1_SCALE determines scale for all polyphonic cvs)
+#define CV_1_SCALE V_OCT  // V_OCT || HZ_V  (CV_1_SCALE determines scale for all polyphonic cvs)
 #define CV_2_SCALE V_OCT  // V_OCT || HZ_V
 #define CV_3_SCALE V_OCT  // V_OCT || HZ_V
 

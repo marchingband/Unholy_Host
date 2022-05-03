@@ -43,8 +43,10 @@ bool doPipeConfig = false;
 bool usbConnected = false;
 
 //SAMD21 datasheet pg 836. ADDR location needs to be aligned. 
-uint8_t bufBk0[64] __attribute__ ((aligned (4))); //Bank0
-uint8_t bufBk1[64] __attribute__ ((aligned (4))); //Bank1
+uint8_t bufBk0[256] __attribute__ ((aligned (4))); //Bank0
+uint8_t bufBk1[256] __attribute__ ((aligned (4))); //Bank1
+// uint8_t bufBk0[64] __attribute__ ((aligned (4))); //Bank0
+// uint8_t bufBk1[64] __attribute__ ((aligned (4))); //Bank1
 
 void usb_host_init(void)
 {
