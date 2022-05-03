@@ -77,9 +77,13 @@ uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
 #ifdef CALIBRATION_MODE
     return note_to_dac_val_calibration(note, num_dac);
 #else
-    int clamped_note = note > V_OCT_MAX ? V_OCT_MAX : note < V_OCT_MIN ? V_OCT_MIN : note;
+    int clamped_note = (note > V_OCT_MAX) ? V_OCT_MAX : (note < V_OCT_MIN) ? V_OCT_MIN : note;
     int index = clamped_note - V_OCT_MIN;
     double volts = (double)(index) / (double)(12.0);
+
+    // char log[200];
+    // sprintf(log, "midi_to_v_oct note:%d clamped_note:%d index:%d volts:%f", note, clamped_note, index, volts );
+    // Serial1.println(log);
 
     // calculate pitch bend
     double pitch_bend_range_volts = PITCH_BEND_RANGE / 12.0;
@@ -89,9 +93,9 @@ uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
     double pitch_bend = pitch_bend_range_volts * pitch_ratio;
     double bent_volts = volts + pitch_bend;
 
-    // char log[200];
-    // sprintf(log, "pitch_bend_range_volts:%f pitch_state:%f pitch_state_signed:%f pitch_ratio:%f pitch_bend:%f volts:%f bent_volts:%f", pitch_bend_range_volts, pitch_state, pitch_state_signed, pitch_ratio, pitch_bend, volts, bent_volts);
-    // Serial1.println(log);
+    // char log1[200];
+    // sprintf(log1, "pitch_bend_range_volts:%f pitch_state:%f pitch_state_signed:%f pitch_ratio:%f pitch_bend:%f volts:%f bent_volts:%f", pitch_bend_range_volts, pitch_state, pitch_state_signed, pitch_ratio, pitch_bend, volts, bent_volts);
+    // Serial1.println(log1);
 
     return volts_to_dac_val(bent_volts, num_dac);
 #endif

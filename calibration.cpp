@@ -6,6 +6,8 @@
 // dac 1 & 2 : 2238 = 4.935v
 // dac 3 : 2911 = 4.935v
 
+#define U12_MAX 8191
+
 #define DAC_1_2_MAX 2238.0
 #define DAC_3_MAX 2911.0
 #define DAC_V_MAX 4.935
@@ -13,6 +15,7 @@
 #define NUM_NOTES_V_OCT (V_OCT_MAX - V_OCT_MIN)// 60 // A0 to G#4
 #define CALIBRATION_INTERVAL 5 // perfect 4th
 #define NUM_CALIBRATION_POINTS (( NUM_NOTES_V_OCT / CALIBRATION_INTERVAL ) + 1 ) // 13
+#define MAX_RANGE_INDEX (NUM_CALIBRATION_POINTS - 2)
 
 uint16_t just_dac_vals_v_oct[NUM_DACS][NUM_NOTES_V_OCT];
 double volts_hz_v[NUM_DACS][NUM_NOTES_V_OCT];
@@ -28,35 +31,58 @@ double calibration_readings[NUM_DACS][NUM_CALIBRATION_POINTS] = {
 
 uint16_t volts_to_dac_val(double target_volts, uint8_t num_dac)
 {
+    double clamped_target_volts = (target_volts > 5.0) ? 5.0 : (target_volts < 0.0) ? 0.0 : target_volts;
     // find the right slope - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - -
     uint8_t num_range = 0;
     for(int i=0; i<NUM_CALIBRATION_POINTS; i++)
     {
-        if(i == ( NUM_CALIBRATION_POINTS - 1))
+        if(i == MAX_RANGE_INDEX)
         {
             // no need to check - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            num_range = (NUM_CALIBRATION_POINTS - 1);
+            num_range = MAX_RANGE_INDEX;
             break;
         }
         double upper_bound_of_range = calibration_readings[num_dac][i + 1];
-        if(target_volts < upper_bound_of_range)
+        if(clamped_target_volts < upper_bound_of_range)
         {
             num_range = i;
             break;
         }
     }
     double dx_min = just_dac_vals_v_oct[num_dac][num_range * CALIBRATION_INTERVAL]; // the number we sent during calibration
-    double dx_max = just_dac_vals_v_oct[num_dac][( num_range + 1 ) * CALIBRATION_INTERVAL]; // the number we sent during calibration
+    double dx_max = just_dac_vals_v_oct[num_dac][(( num_range + 1 ) * CALIBRATION_INTERVAL) - (num_range >= MAX_RANGE_INDEX)]; // the number we sent during calibration, which needs to be trimmed for the last range
     double dy_min = calibration_readings[num_dac][num_range]; // the voltage we got
     double dy_max = calibration_readings[num_dac][num_range + 1]; // the voltage we got
     double dx = dx_max - dx_min;
     double dy = dy_max - dy_min;
     double slope = dx / dy;
-    double y_component = target_volts - dy_min;
+    double y_component = clamped_target_volts - dy_min;
     double val = dx_min + ( slope * y_component);
     double val_rnd = round(val);
-    val_rnd = val_rnd < 0.0 ? 0.0 : val_rnd; // clamp to 0 
     uint16_t out = (uint16_t)val_rnd;
+
+    // if(num_dac == 0)
+    // {
+    //     char log[200];
+    //     sprintf(log, "target_volts:%f num_range:%d dx_min:%f dx_max:%f dy_min:%f dy_max:%f slope:%f y_component:%f val:%f clamped_val:%f", 
+    //         target_volts,
+    //         num_range,
+    //         dx_min,
+    //         dx_max,
+    //         dy_min,
+    //         dy_max,
+    //         slope,
+    //         y_component,
+    //         val,
+    //         clamped_val
+    //     );
+    //     Serial1.println(log);
+    // }
+
+    // char log[200];
+    // sprintf(log, "val:%f out:%d", val, out );
+    // Serial1.println(log);
+
     return out;
 }
 
