@@ -6,12 +6,7 @@
 #include "gates.h"
 #include "polyphony.h"
 
-struct gate_t {
-    int source;
-    int invert;
-    int note;
-};
-
+struct cv_t cvs[3];
 struct gate_t gates[8];
 
 unsigned long clock_cnt = 0;
@@ -397,8 +392,41 @@ void gates_handle_transport(uint8_t code)
     }
 }
 
+void dacs_handle_pitch_bend(void)
+{
+    // note_to_dac() will update the pitch
+#ifdef MONOPHONIC
+    if(cvs[0].is_pitch)
+    {
+        note_to_dac(0, cvs[0].note, CV_1_SCALE == V_OCT);
+    }
+    if(cvs[1].is_pitch)
+    {
+        note_to_dac(1, cvs[1].note, CV_2_SCALE == V_OCT);
+    }
+    if(cvs[2].is_pitch)
+    {
+        note_to_dac(2, cvs[2].note, CV_3_SCALE == V_OCT);
+    }
+#endif
+#ifdef DUOPHONIC
+    note_to_dac(0, cvs[0].note, CV_1_SCALE == V_OCT);
+    note_to_dac(1, cvs[1].note, CV_1_SCALE == V_OCT);
+    if(cvs[2].is_pitch)
+    {
+        note_to_dac(2, cvs[2].note, CV_3_SCALE == V_OCT);
+    }
+#endif
+#ifdef TRIPHONIC
+    note_to_dac(0, cvs[0].note, CV_1_SCALE == V_OCT);
+    note_to_dac(1, cvs[1].note, CV_1_SCALE == V_OCT);
+    note_to_dac(2, cvs[2].note, CV_1_SCALE == V_OCT);
+#endif
+}
+
 void init_handlers(void)
 {
+    // gates - - - - - - - - - - - - - - - - - - - - - - - - - - -
     gates[0].source = GATE_1_SOURCE;
     gates[0].note = GATE_1_NOTE;
 #ifdef GATE_1_INVERT
@@ -454,5 +482,21 @@ void init_handlers(void)
     gates[7].invert = 1;
 #else
     gates[7].invert = 0;
+#endif
+    // cvs - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#ifdef MONOPHONIC
+    cvs[0].is_pitch = (CV_1_SOURCE == NOTE);
+    cvs[1].is_pitch = (CV_2_SOURCE == NOTE);
+    cvs[2].is_pitch = (CV_3_SOURCE == NOTE);
+#endif
+#ifdef DUOPHONIC
+    cvs[0].is_pitch = true;
+    cvs[1].is_pitch = true;
+    cvs[2].is_pitch = (CV_3_SOURCE == NOTE);
+#endif
+#ifdef TRIPHONIC
+    cvs[0].is_pitch = true;
+    cvs[1].is_pitch = true;
+    cvs[2].is_pitch = true;
 #endif
 }

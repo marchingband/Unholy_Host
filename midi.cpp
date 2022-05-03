@@ -6,6 +6,7 @@
 #include "handlers.h"
 #include "config.h"
 #include "constants.h"
+#include "midi.h"
 
 #define DAC_1 0
 #define DAC_2 1
@@ -17,6 +18,7 @@ midiXparser midiDeviceParser;
 int hi = 0;
 
 uint8_t *msg;
+uint16_t pitch_bend_state = 8192;
 
 void handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
@@ -65,6 +67,13 @@ void handle_transport(uint8_t code)
     gates_handle_transport(code);
 }
 
+void handle_pitch_bend(uint8_t channel, uint16_t pitch_bend)
+{
+    // pitch_bend = 0 to 16,383 // 8192 is none
+    pitch_bend_state = pitch_bend;
+    dacs_handle_pitch_bend();
+}
+
 void handle_midi(uint8_t *msg)
 {
     // blink
@@ -104,6 +113,14 @@ void handle_midi(uint8_t *msg)
             uint8_t cc = msg[1] & 0b01111111;
             uint8_t val = msg[2]  & 0b01111111;
             handle_cc(channel + 1, cc, val);
+            break;
+        }
+        case MIDI_PITCH_BEND:
+        {
+            uint8_t lsb = msg[1] & 0b01111111;
+            uint8_t msb = msg[2]  & 0b01111111;
+            uint16_t pitch_bend = ((msb << 7) | lsb);
+            handle_pitch_bend(channel + 1, pitch_bend);
             break;
         }
         default: break;

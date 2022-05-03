@@ -50,6 +50,7 @@
 #define MIDI_NOTE_OFF 8
 #define MIDI_NOTE_ON 9
 #define MIDI_CC 11
+#define MIDI_PITCH_BEND 14
 #define MIDI_CLOCK 248
 #define MIDI_START 250
 #define MIDI_CONTINUE 251

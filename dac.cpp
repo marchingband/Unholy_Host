@@ -4,6 +4,8 @@
 #include "constants.h"
 #include "calibration.h"
 #include "config.h"
+#include "midi.h"
+#include "handlers.h"
 
 // #define CALIBRATION_MODE
 // #define DEBUG
@@ -78,7 +80,20 @@ uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
     int clamped_note = note > V_OCT_MAX ? V_OCT_MAX : note < V_OCT_MIN ? V_OCT_MIN : note;
     int index = clamped_note - V_OCT_MIN;
     double volts = (double)(index) / (double)(12.0);
-    return volts_to_dac_val(volts, num_dac);
+
+    // calculate pitch bend
+    double pitch_bend_range_volts = PITCH_BEND_RANGE / 12.0;
+    double pitch_state = (double)pitch_bend_state;
+    double pitch_state_signed = pitch_state - 8192.0;
+    double pitch_ratio = pitch_state_signed / 8192.0;
+    double pitch_bend = pitch_bend_range_volts * pitch_ratio;
+    double bent_volts = volts + pitch_bend;
+
+    // char log[200];
+    // sprintf(log, "pitch_bend_range_volts:%f pitch_state:%f pitch_state_signed:%f pitch_ratio:%f pitch_bend:%f volts:%f bent_volts:%f", pitch_bend_range_volts, pitch_state, pitch_state_signed, pitch_ratio, pitch_bend, volts, bent_volts);
+    // Serial1.println(log);
+
+    return volts_to_dac_val(bent_volts, num_dac);
 #endif
 }
 
@@ -87,7 +102,20 @@ uint16_t midi_to_hz_v(uint8_t num_dac, uint8_t note)
     int clamped_note = note > HZ_V_MAX ? HZ_V_MAX : note < HZ_V_MIN ? HZ_V_MIN : note;
     int index = clamped_note - HZ_V_MIN;
     double volts = volts_hz_v_lut[index];
-    return volts_to_dac_val(volts, num_dac);
+
+    double pitch_bend_range_volts = PITCH_BEND_RANGE / 12.0;
+    double pitch_state = (double)pitch_bend_state;
+    double pitch_state_signed = pitch_state - 8192.0;
+    double pitch_ratio = pitch_state_signed / 8192.0;
+    double pitch_bend = pitch_bend_range_volts * pitch_ratio;
+    double frequency_factor = pow(2.0, pitch_bend);
+    double bent_volts = volts * frequency_factor;
+
+    // char log[200];
+    // sprintf(log, "pitch_bend_range_volts:%f pitch_state:%f pitch_state_signed:%f pitch_ratio:%f pitch_bend:%f frequency_factor:%f volts:%f bent_volts:%f", pitch_bend_range_volts, pitch_state, pitch_state_signed, pitch_ratio, pitch_bend, frequency_factor, volts, bent_volts);
+    // Serial1.println(log);
+
+    return volts_to_dac_val(bent_volts, num_dac);
 }
 
 void note_to_dac(uint8_t num_dac, uint8_t note, bool is_v_oct)
@@ -95,6 +123,9 @@ void note_to_dac(uint8_t num_dac, uint8_t note, bool is_v_oct)
     char log[20];
     sprintf(log, "dac%d note-%d", num_dac, note);
     Serial1.println(log);
+
+    // update state
+    cvs[num_dac].note = note;
 
     uint16_t val = is_v_oct ? midi_to_v_oct(num_dac, note) : midi_to_hz_v(num_dac, note);
 
