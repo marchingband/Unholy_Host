@@ -3,6 +3,8 @@
 
 #include "constants.h"
 
+// #define CALIBRATION_MODE // uncomment this line to enter calibration mode
+
 #define MONOPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
 
 #if defined(MONOPHONIC)

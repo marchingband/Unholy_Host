@@ -10,6 +10,9 @@
 #define HZ_V_MAX 72
 #define NUM_DACS 3
 
+#define NUM_NOTES_HZ_V (HZ_V_MAX - HZ_V_MIN)    // 63 // A0 to G#4
+#define NUM_NOTES_V_OCT (V_OCT_MAX - V_OCT_MIN) // 60 // A0 to G#4
+
 // CV MODES
 #define HIGHEST 0
 #define LOWEST 1

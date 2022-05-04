@@ -7,10 +7,6 @@
 #include "midi.h"
 #include "handlers.h"
 
-// #define CALIBRATION_MODE
-// #define DEBUG
-#define NUM_NOTES_HZ_V (HZ_V_MAX - HZ_V_MIN)   // 63 // A0 to G#4
-
 MCP4822 *dac;
 
 int chan_one = 0;
@@ -74,11 +70,13 @@ void dac_set_chan_all(int val_one, int val_two)
 
 uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
 {
-#ifdef CALIBRATION_MODE
-    return note_to_dac_val_calibration(note, num_dac);
-#else
     int clamped_note = (note > V_OCT_MAX) ? V_OCT_MAX : (note < V_OCT_MIN) ? V_OCT_MIN : note;
     int index = clamped_note - V_OCT_MIN;
+
+#ifdef CALIBRATION_MODE
+    return note_to_dac_val_calibration(index, num_dac);
+#else
+
     double volts = (double)(index) / (double)(12.0);
 
     // char log[200];
@@ -131,7 +129,11 @@ void note_to_dac(uint8_t num_dac, uint8_t note, bool is_v_oct)
     // update state
     cvs[num_dac].note = note;
 
+#ifdef CALIBRATION_MODE
+    uint16_t val = midi_to_v_oct(num_dac, note); // calibration is always v/oct
+#else
     uint16_t val = is_v_oct ? midi_to_v_oct(num_dac, note) : midi_to_hz_v(num_dac, note);
+#endif
 
     if(num_dac == 0)
     {

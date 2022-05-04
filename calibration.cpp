@@ -6,13 +6,10 @@
 // dac 1 & 2 : 2238 = 4.935v
 // dac 3 : 2911 = 4.935v
 
-#define U12_MAX 8191
-
 #define DAC_1_2_MAX 2238.0
 #define DAC_3_MAX 2911.0
 #define DAC_V_MAX 4.935
 
-#define NUM_NOTES_V_OCT (V_OCT_MAX - V_OCT_MIN)// 60 // A0 to G#4
 #define CALIBRATION_INTERVAL 5 // perfect 4th
 #define NUM_CALIBRATION_POINTS (( NUM_NOTES_V_OCT / CALIBRATION_INTERVAL ) + 1 ) // 13
 #define MAX_RANGE_INDEX (NUM_CALIBRATION_POINTS - 2)
@@ -22,11 +19,11 @@ double volts_hz_v[NUM_DACS][NUM_NOTES_V_OCT];
 
 double calibration_readings[NUM_DACS][NUM_CALIBRATION_POINTS] = {
     // dac 1 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    {0.001, 0.414, 0.827, 1.245, 1.664, 2.078, 2.495, 2.911, 3.331, 3.752, 4.168, 4.587, 4.935},
+    {0.001, 0.414, 0.827, 1.245, 1.664, 2.078, 2.495, 2.911, 3.331, 3.752, 4.168, 4.587, 4.921},
     // dac 2 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    {0.005, 0.432, 0.835, 1.263, 1.672, 2.099, 2.508, 2.931, 3.344, 3.761, 4.174, 4.594, 4.935},
+    {0.005, 0.432, 0.835, 1.264, 1.673, 2.100, 2.509, 2.932, 3.345, 3.762, 4.176, 4.595, 4.929},
     // dac 3 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    {0.009, 0.430, 0.846, 1.266, 1.676, 2.090, 2.499, 2.910, 3.327, 3.739, 4.161, 4.574, 4.935},
+    {0.007, 0.428, 0.846, 1.266, 1.676, 2.091, 2.500, 2.912, 3.329, 3.742, 4.165, 4.579, 4.913},
 };
 
 uint16_t volts_to_dac_val(double target_volts, uint8_t num_dac)

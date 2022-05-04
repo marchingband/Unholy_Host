@@ -1,9 +1,7 @@
 #include <usbh_midi.h>
 #include <usbhub.h>
-#include <MIDI.h>       // MIDI Library by Forty Seven Effects
-
-#include "midi.h"
 #include "usb_host.h"
+#include "midi.h"
 
 // #define SerialDebug Serial1
 
@@ -21,19 +19,6 @@
 #define Is_uhd_toggle(p)                          ((USB->HOST.HostPipe[p].PSTATUS.reg&USB_HOST_PSTATUS_DTGL) == USB_HOST_PSTATUS_DTGL)  
 #define Is_uhd_toggle_error0(p)                   usb_pipe_table[p].HostDescBank[0].STATUS_PIPE.bit.DTGLER
 #define Is_uhd_toggle_error1(p)                   usb_pipe_table[p].HostDescBank[1].STATUS_PIPE.bit.DTGLER
-
-//#define MIDI_SERIAL_PORT Serial1
-
-//struct MySettings : public midi::DefaultSettings
-//{
-////  static const bool Use1ByteParsing = false;
-// static const bool Use1ByteParsing = true;
-// static const unsigned SysExMaxSize = 1026; // Accept SysEx messages up to 1024 bytes long.
-// static const long BaudRate = 31250;
-//};
-
-//MIDI_CREATE_CUSTOM_INSTANCE(HardwareSerial, MIDI_SERIAL_PORT, MIDIUART, MySettings);
-
 
 USBHost UsbH;
 USBHub Hub(&UsbH);
@@ -138,7 +123,6 @@ void handleBank0(uint32_t epAddr){
   for(int i=0;i<rcvd;i++)
   {
     midi_host_parse(bufBk0[i]);
-    // MIDI_SERIAL_PORT.write(bufBk0[i]);
   }
   uhd_ack_in_received0(epAddr);
   uhd_ack_in_ready0(epAddr);
@@ -149,7 +133,6 @@ void handleBank1(uint32_t epAddr){
   for(int i=0;i<rcvd;i++)
   {
     midi_host_parse(bufBk1[i]);
-    // MIDI_SERIAL_PORT.write(bufBk1[i]);
   }
   uhd_ack_in_received1(epAddr);
   uhd_ack_in_ready1(epAddr);
