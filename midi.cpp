@@ -39,6 +39,7 @@ void handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is
     triphonic_handle_note_on_off(channel, note, velocity, is_note_on);
 #endif
     gates_handle_note_on_off(channel, note, velocity, is_note_on);
+    gates_update();
 }
 
 void handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
@@ -50,6 +51,7 @@ void handle_cc(uint8_t channel, uint8_t cc, uint8_t val)
     cv_2_handle_cc(channel, cc, val);
     cv_3_handle_cc(channel, cc, val);
     gates_handle_cc(channel, cc, val);
+    gates_update();
 }
 
 void handle_clock()
@@ -128,7 +130,7 @@ void handle_midi(uint8_t *msg)
         }
         default: break;
     }
-    gates_update();
+    // gates_update();
 }
 
 void handle_realtime_midi(uint8_t *msg)
