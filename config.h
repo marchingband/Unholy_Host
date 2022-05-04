@@ -6,12 +6,12 @@
 #define MONOPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
 
 #if defined(MONOPHONIC)
-    #define CV_1_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND
-    #define CV_2_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND
-    #define CV_3_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND 
+    #define CV_1_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3
+    #define CV_2_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3
+    #define CV_3_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3
 #elif defined(DUOPHONIC)
     #define CV_1_AND_2_MODE        LAST // HIGHEST || LOWEST || LAST 
-    #define CV_3_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 || PITCHBEND 
+    #define CV_3_SOURCE            NOTE // NOTE || VELOCITY || CC1 || CC2 || CC3 ||
 #elif defined(TRIPHONIC)
     #define CV_1_AND_2_AND_3_MODE  LAST // HIGHEST || LOWEST || LAST
 #endif
