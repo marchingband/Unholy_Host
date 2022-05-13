@@ -17,11 +17,19 @@
 uint16_t just_dac_vals_v_oct[NUM_DACS][NUM_NOTES_V_OCT];
 double volts_hz_v[NUM_DACS][NUM_NOTES_V_OCT];
 
+/*
+
+calibration notes for -- CALIBRATION_INTERVAL = 5 -- are:
+A | D | G | C | F | Bb | Eb | Ab | Db | Gb | B | E | Ab  <- note Ab is not a perfect 4th but its the highest note
+
+*/
 double calibration_readings[NUM_DACS][NUM_CALIBRATION_POINTS] = {
     // dac 1 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    {0.001, 0.414, 0.827, 1.245, 1.664, 2.078, 2.495, 2.911, 3.331, 3.752, 4.168, 4.587, 4.921},
+    {0.008, 0.423, 0.836, 1.249, 1.660, 2.065, 2.481, 2.895, 3.309, 3.720, 4.130, 4.546, 4.873},
+    // {0.001, 0.414, 0.827, 1.245, 1.664, 2.078, 2.495, 2.911, 3.331, 3.752, 4.168, 4.587, 4.921},
     // dac 2 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    {0.005, 0.432, 0.835, 1.264, 1.673, 2.100, 2.509, 2.932, 3.345, 3.762, 4.176, 4.595, 4.929},
+    {0.006, 0.410, 0.829, 1.242, 1.659, 2.069, 2.487, 2.889, 3.315, 3.725, 4.140, 4.555, 4.882},
+    // {0.005, 0.432, 0.835, 1.264, 1.673, 2.100, 2.509, 2.932, 3.345, 3.762, 4.176, 4.595, 4.929},
     // dac 3 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     {0.007, 0.428, 0.846, 1.266, 1.676, 2.091, 2.500, 2.912, 3.329, 3.742, 4.165, 4.579, 4.913},
 };
@@ -29,13 +37,13 @@ double calibration_readings[NUM_DACS][NUM_CALIBRATION_POINTS] = {
 uint16_t volts_to_dac_val(double target_volts, uint8_t num_dac)
 {
     double clamped_target_volts = (target_volts > 5.0) ? 5.0 : (target_volts < 0.0) ? 0.0 : target_volts;
-    // find the right slope - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - -
+    // find the right slope
     uint8_t num_range = 0;
     for(int i=0; i<NUM_CALIBRATION_POINTS; i++)
     {
         if(i == MAX_RANGE_INDEX)
         {
-            // no need to check - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // no need to check
             num_range = MAX_RANGE_INDEX;
             break;
         }

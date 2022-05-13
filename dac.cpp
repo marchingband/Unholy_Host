@@ -9,15 +9,12 @@
 
 MCP4822 *dac;
 
-int chan_one = 0;
-int chan_two = 0;
-
 double volts_hz_v_lut[NUM_NOTES_HZ_V];
 
 void init_hz_v_lut(void)
 {
     volts_hz_v_lut[0] = 0.0;         // place the 1st hz/v
-    volts_hz_v_lut[1] = 0.125 / 2; // place the 2nd hz/v
+    volts_hz_v_lut[1] = 0.125 / 2;   // place the 2nd hz/v
     for(int note=2; note<NUM_NOTES_HZ_V; note++)
     {
         double val = volts_hz_v_lut[note - 1]  * pow(2.0, 1.0 / 12.0);
@@ -42,15 +39,13 @@ void dac_init()
 
 void dac_set_chan_one(int val)
 {
-    chan_one = val;
-    dac->setVoltageA(chan_one);
+    dac->setVoltageA(val);
     dac->updateDAC();
 }
 
 void dac_set_chan_two(int val)
 {
-    chan_two = val;
-    dac->setVoltageB(chan_two);
+    dac->setVoltageB(val);
     dac->updateDAC();
 }
 
@@ -61,10 +56,8 @@ void dac_set_chan_three(int val)
 
 void dac_set_chan_all(int val_one, int val_two)
 {
-    chan_one = val_one;
-    chan_two = val_two;
-    dac->setVoltageA(chan_one);
-    dac->setVoltageB(chan_two);
+    dac->setVoltageA(val_one);
+    dac->setVoltageB(val_two);
     dac->updateDAC();
 }
 
