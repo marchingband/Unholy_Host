@@ -410,6 +410,10 @@ Discarded input sections
  .text          0x0000000000000000        0x0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
  .data          0x0000000000000000        0x0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
  .bss           0x0000000000000000        0x0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
+ .bss.test_index
+                0x0000000000000000        0x4 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
+ .data.test_vals
+                0x0000000000000000       0x20 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
  .text          0x0000000000000000        0x0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/polyphony.cpp.o
  .data          0x0000000000000000        0x0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/polyphony.cpp.o
  .bss           0x0000000000000000        0x0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/polyphony.cpp.o
@@ -7745,50 +7749,50 @@ OUTPUT(/var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4
  .comment       0x000000000000007e       0x7f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(new.cpp.o)
  .comment       0x000000000000007e       0x7f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SAMD21_USBDevice.cpp.o)
 
-.debug_info     0x0000000000000000    0xeed8e
+.debug_info     0x0000000000000000    0xeedcb
  .debug_info    0x0000000000000000     0x4eed /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/calibration.cpp.o
  .debug_info    0x0000000000004eed     0x66df /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/dac.cpp.o
  .debug_info    0x000000000000b5cc     0x522f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/gates.cpp.o
  .debug_info    0x00000000000107fb     0x552b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/handlers.cpp.o
  .debug_info    0x0000000000015d26     0x5842 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi.cpp.o
  .debug_info    0x000000000001b568     0x5406 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
- .debug_info    0x000000000002096e     0x5013 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
- .debug_info    0x0000000000025981     0x5443 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/rgb_led.cpp.o
- .debug_info    0x000000000002adc4     0x4d82 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_device.cpp.o
- .debug_info    0x000000000002fb46     0xaec0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_host.cpp.o
- .debug_info    0x000000000003aa06     0x709b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/SPI/SPI.cpp.o
- .debug_info    0x0000000000041aa1     0x7763 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_ZeroDMA/Adafruit_ZeroDMA.cpp.o
- .debug_info    0x0000000000049204     0x623f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- .debug_info    0x000000000004f443     0x799b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(usbmidi_pluggableusb.cpp.o)
- .debug_info    0x0000000000056dde      0x516 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(midi_serialization.cpp.o)
- .debug_info    0x00000000000572f4     0xc5df /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/BTD.cpp.o
- .debug_info    0x00000000000638d3     0xaf65 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3USB.cpp.o
- .debug_info    0x000000000006e838     0x97a2 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/Usb.cpp.o
- .debug_info    0x0000000000077fda     0x9f0b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
- .debug_info    0x0000000000081ee5     0x712c /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbhub.cpp.o
- .debug_info    0x0000000000089011     0x64b8 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/core/variant.cpp.o
- .debug_info    0x000000000008f4c9     0x3f45 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(samd21_host.c.o)
- .debug_info    0x000000000009340e     0x112d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(cortex_handlers.c.o)
- .debug_info    0x000000000009453b     0x1569 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(delay.c.o)
- .debug_info    0x0000000000095aa4       0xa3 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(hooks.c.o)
- .debug_info    0x0000000000095b47     0x34de /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(startup.c.o)
- .debug_info    0x0000000000099025     0x2d72 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring.c.o)
- .debug_info    0x000000000009bd97     0x4ec9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_analog.c.o)
- .debug_info    0x00000000000a0c60     0x1837 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_digital.c.o)
- .debug_info    0x00000000000a2497     0x1835 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_private.c.o)
- .debug_info    0x00000000000a3ccc      0xe50 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_shift.c.o)
- .debug_info    0x00000000000a4b1c     0x75bf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Print.cpp.o)
- .debug_info    0x00000000000ac0db     0x5300 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Reset.cpp.o)
- .debug_info    0x00000000000b13db     0x4dc6 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Retarget.cpp.o)
- .debug_info    0x00000000000b61a1     0x63eb /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SERCOM.cpp.o)
- .debug_info    0x00000000000bc58c     0x7406 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(CDC.cpp.o)
- .debug_info    0x00000000000c3992     0x52cd /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(PluggableUSB.cpp.o)
- .debug_info    0x00000000000c8c5f     0xcb4e /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(USBCore.cpp.o)
- .debug_info    0x00000000000d57ad     0x7ecf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Uart.cpp.o)
- .debug_info    0x00000000000dd67c     0x101d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WMath.cpp.o)
- .debug_info    0x00000000000de699     0x4dcd /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(main.cpp.o)
- .debug_info    0x00000000000e3466     0x4eb5 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(new.cpp.o)
- .debug_info    0x00000000000e831b     0x6a73 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SAMD21_USBDevice.cpp.o)
+ .debug_info    0x000000000002096e     0x5050 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
+ .debug_info    0x00000000000259be     0x5443 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/rgb_led.cpp.o
+ .debug_info    0x000000000002ae01     0x4d82 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_device.cpp.o
+ .debug_info    0x000000000002fb83     0xaec0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_host.cpp.o
+ .debug_info    0x000000000003aa43     0x709b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/SPI/SPI.cpp.o
+ .debug_info    0x0000000000041ade     0x7763 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_ZeroDMA/Adafruit_ZeroDMA.cpp.o
+ .debug_info    0x0000000000049241     0x623f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .debug_info    0x000000000004f480     0x799b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(usbmidi_pluggableusb.cpp.o)
+ .debug_info    0x0000000000056e1b      0x516 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(midi_serialization.cpp.o)
+ .debug_info    0x0000000000057331     0xc5df /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/BTD.cpp.o
+ .debug_info    0x0000000000063910     0xaf65 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3USB.cpp.o
+ .debug_info    0x000000000006e875     0x97a2 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/Usb.cpp.o
+ .debug_info    0x0000000000078017     0x9f0b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
+ .debug_info    0x0000000000081f22     0x712c /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbhub.cpp.o
+ .debug_info    0x000000000008904e     0x64b8 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/core/variant.cpp.o
+ .debug_info    0x000000000008f506     0x3f45 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(samd21_host.c.o)
+ .debug_info    0x000000000009344b     0x112d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(cortex_handlers.c.o)
+ .debug_info    0x0000000000094578     0x1569 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(delay.c.o)
+ .debug_info    0x0000000000095ae1       0xa3 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(hooks.c.o)
+ .debug_info    0x0000000000095b84     0x34de /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(startup.c.o)
+ .debug_info    0x0000000000099062     0x2d72 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring.c.o)
+ .debug_info    0x000000000009bdd4     0x4ec9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_analog.c.o)
+ .debug_info    0x00000000000a0c9d     0x1837 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_digital.c.o)
+ .debug_info    0x00000000000a24d4     0x1835 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_private.c.o)
+ .debug_info    0x00000000000a3d09      0xe50 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_shift.c.o)
+ .debug_info    0x00000000000a4b59     0x75bf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Print.cpp.o)
+ .debug_info    0x00000000000ac118     0x5300 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Reset.cpp.o)
+ .debug_info    0x00000000000b1418     0x4dc6 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Retarget.cpp.o)
+ .debug_info    0x00000000000b61de     0x63eb /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SERCOM.cpp.o)
+ .debug_info    0x00000000000bc5c9     0x7406 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(CDC.cpp.o)
+ .debug_info    0x00000000000c39cf     0x52cd /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(PluggableUSB.cpp.o)
+ .debug_info    0x00000000000c8c9c     0xcb4e /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(USBCore.cpp.o)
+ .debug_info    0x00000000000d57ea     0x7ecf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Uart.cpp.o)
+ .debug_info    0x00000000000dd6b9     0x101d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WMath.cpp.o)
+ .debug_info    0x00000000000de6d6     0x4dcd /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(main.cpp.o)
+ .debug_info    0x00000000000e34a3     0x4eb5 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(new.cpp.o)
+ .debug_info    0x00000000000e8358     0x6a73 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SAMD21_USBDevice.cpp.o)
 
 .debug_abbrev   0x0000000000000000    0x11d0d
  .debug_abbrev  0x0000000000000000      0x625 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/calibration.cpp.o
@@ -8010,137 +8014,137 @@ OUTPUT(/var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4
  .debug_ranges  0x00000000000028e0       0x20 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(new.cpp.o)
  .debug_ranges  0x0000000000002900       0x18 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SAMD21_USBDevice.cpp.o)
 
-.debug_line     0x0000000000000000    0x16cb8
+.debug_line     0x0000000000000000    0x16cc9
  .debug_line    0x0000000000000000      0x7e7 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/calibration.cpp.o
  .debug_line    0x00000000000007e7      0xb78 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/dac.cpp.o
  .debug_line    0x000000000000135f      0x87d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/gates.cpp.o
  .debug_line    0x0000000000001bdc      0x95e /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/handlers.cpp.o
  .debug_line    0x000000000000253a      0x883 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi.cpp.o
  .debug_line    0x0000000000002dbd      0x8df /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
- .debug_line    0x000000000000369c      0x83a /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
- .debug_line    0x0000000000003ed6      0x785 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/rgb_led.cpp.o
- .debug_line    0x000000000000465b      0x75a /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_device.cpp.o
- .debug_line    0x0000000000004db5      0x931 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_host.cpp.o
- .debug_line    0x00000000000056e6      0xbb1 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/SPI/SPI.cpp.o
- .debug_line    0x0000000000006297      0xb9d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_ZeroDMA/Adafruit_ZeroDMA.cpp.o
- .debug_line    0x0000000000006e34      0xaac /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
- .debug_line    0x00000000000078e0      0xa80 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(usbmidi_pluggableusb.cpp.o)
- .debug_line    0x0000000000008360      0x2f0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(midi_serialization.cpp.o)
- .debug_line    0x0000000000008650     0x1167 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/BTD.cpp.o
- .debug_line    0x00000000000097b7      0xcb3 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3USB.cpp.o
- .debug_line    0x000000000000a46a      0xca2 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/Usb.cpp.o
- .debug_line    0x000000000000b10c      0xabf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
- .debug_line    0x000000000000bbcb      0xa5c /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbhub.cpp.o
- .debug_line    0x000000000000c627      0x613 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/core/variant.cpp.o
- .debug_line    0x000000000000cc3a      0x761 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(samd21_host.c.o)
- .debug_line    0x000000000000d39b      0x3cf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(cortex_handlers.c.o)
- .debug_line    0x000000000000d76a      0x648 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(delay.c.o)
- .debug_line    0x000000000000ddb2       0xaf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(hooks.c.o)
- .debug_line    0x000000000000de61      0x4c0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(startup.c.o)
- .debug_line    0x000000000000e321      0x5d8 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring.c.o)
- .debug_line    0x000000000000e8f9      0x6e6 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_analog.c.o)
- .debug_line    0x000000000000efdf      0x540 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_digital.c.o)
- .debug_line    0x000000000000f51f      0x555 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_private.c.o)
- .debug_line    0x000000000000fa74      0x33f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_shift.c.o)
- .debug_line    0x000000000000fdb3      0xa0f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Print.cpp.o)
- .debug_line    0x00000000000107c2      0x78c /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Reset.cpp.o)
- .debug_line    0x0000000000010f4e      0x6e0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Retarget.cpp.o)
- .debug_line    0x000000000001162e      0xdbb /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SERCOM.cpp.o)
- .debug_line    0x00000000000123e9      0x93f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(CDC.cpp.o)
- .debug_line    0x0000000000012d28      0x7d4 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(PluggableUSB.cpp.o)
- .debug_line    0x00000000000134fc     0x13dc /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(USBCore.cpp.o)
- .debug_line    0x00000000000148d8      0xa40 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Uart.cpp.o)
- .debug_line    0x0000000000015318      0x459 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WMath.cpp.o)
- .debug_line    0x0000000000015771      0x70d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(main.cpp.o)
- .debug_line    0x0000000000015e7e      0x762 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(new.cpp.o)
- .debug_line    0x00000000000165e0      0x6d8 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SAMD21_USBDevice.cpp.o)
+ .debug_line    0x000000000000369c      0x84b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
+ .debug_line    0x0000000000003ee7      0x785 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/rgb_led.cpp.o
+ .debug_line    0x000000000000466c      0x75a /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_device.cpp.o
+ .debug_line    0x0000000000004dc6      0x931 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_host.cpp.o
+ .debug_line    0x00000000000056f7      0xbb1 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/SPI/SPI.cpp.o
+ .debug_line    0x00000000000062a8      0xb9d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_ZeroDMA/Adafruit_ZeroDMA.cpp.o
+ .debug_line    0x0000000000006e45      0xaac /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .debug_line    0x00000000000078f1      0xa80 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(usbmidi_pluggableusb.cpp.o)
+ .debug_line    0x0000000000008371      0x2f0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(midi_serialization.cpp.o)
+ .debug_line    0x0000000000008661     0x1167 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/BTD.cpp.o
+ .debug_line    0x00000000000097c8      0xcb3 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3USB.cpp.o
+ .debug_line    0x000000000000a47b      0xca2 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/Usb.cpp.o
+ .debug_line    0x000000000000b11d      0xabf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
+ .debug_line    0x000000000000bbdc      0xa5c /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbhub.cpp.o
+ .debug_line    0x000000000000c638      0x613 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/core/variant.cpp.o
+ .debug_line    0x000000000000cc4b      0x761 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(samd21_host.c.o)
+ .debug_line    0x000000000000d3ac      0x3cf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(cortex_handlers.c.o)
+ .debug_line    0x000000000000d77b      0x648 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(delay.c.o)
+ .debug_line    0x000000000000ddc3       0xaf /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(hooks.c.o)
+ .debug_line    0x000000000000de72      0x4c0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(startup.c.o)
+ .debug_line    0x000000000000e332      0x5d8 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring.c.o)
+ .debug_line    0x000000000000e90a      0x6e6 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_analog.c.o)
+ .debug_line    0x000000000000eff0      0x540 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_digital.c.o)
+ .debug_line    0x000000000000f530      0x555 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_private.c.o)
+ .debug_line    0x000000000000fa85      0x33f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_shift.c.o)
+ .debug_line    0x000000000000fdc4      0xa0f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Print.cpp.o)
+ .debug_line    0x00000000000107d3      0x78c /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Reset.cpp.o)
+ .debug_line    0x0000000000010f5f      0x6e0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Retarget.cpp.o)
+ .debug_line    0x000000000001163f      0xdbb /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SERCOM.cpp.o)
+ .debug_line    0x00000000000123fa      0x93f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(CDC.cpp.o)
+ .debug_line    0x0000000000012d39      0x7d4 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(PluggableUSB.cpp.o)
+ .debug_line    0x000000000001350d     0x13dc /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(USBCore.cpp.o)
+ .debug_line    0x00000000000148e9      0xa40 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Uart.cpp.o)
+ .debug_line    0x0000000000015329      0x459 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WMath.cpp.o)
+ .debug_line    0x0000000000015782      0x70d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(main.cpp.o)
+ .debug_line    0x0000000000015e8f      0x762 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(new.cpp.o)
+ .debug_line    0x00000000000165f1      0x6d8 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SAMD21_USBDevice.cpp.o)
 
-.debug_str      0x0000000000000000    0x190ae
+.debug_str      0x0000000000000000    0x190c2
  .debug_str     0x0000000000000000     0x3021 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/calibration.cpp.o
                                        0x38ef (size before relaxing)
- .debug_str     0x0000000000003021     0x14a6 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/dac.cpp.o
+ .debug_str     0x0000000000003021     0x14a0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/dac.cpp.o
                                        0x4d34 (size before relaxing)
- .debug_str     0x00000000000044c7      0x387 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/gates.cpp.o
+ .debug_str     0x00000000000044c1      0x387 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/gates.cpp.o
                                        0x3b1a (size before relaxing)
- .debug_str     0x000000000000484e      0x46d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/handlers.cpp.o
+ .debug_str     0x0000000000004848      0x46d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/handlers.cpp.o
                                        0x3c0d (size before relaxing)
- .debug_str     0x0000000000004cbb      0x85b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi.cpp.o
+ .debug_str     0x0000000000004cb5      0x85b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi.cpp.o
                                        0x42c5 (size before relaxing)
- .debug_str     0x0000000000005516       0xeb /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
+ .debug_str     0x0000000000005510       0xeb /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
                                        0x3e6b (size before relaxing)
- .debug_str     0x0000000000005601      0x16c /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
-                                       0x39f1 (size before relaxing)
- .debug_str     0x000000000000576d      0x54d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/rgb_led.cpp.o
+ .debug_str     0x00000000000055fb      0x186 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
+                                       0x3a0b (size before relaxing)
+ .debug_str     0x0000000000005781      0x54d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/rgb_led.cpp.o
                                        0x3ce4 (size before relaxing)
- .debug_str     0x0000000000005cba       0xd5 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_device.cpp.o
+ .debug_str     0x0000000000005cce       0xd5 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_device.cpp.o
                                        0x3867 (size before relaxing)
- .debug_str     0x0000000000005d8f     0x7a01 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_host.cpp.o
+ .debug_str     0x0000000000005da3     0x7a01 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_host.cpp.o
                                        0xb9aa (size before relaxing)
- .debug_str     0x000000000000d790      0x53d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/SPI/SPI.cpp.o
+ .debug_str     0x000000000000d7a4      0x53d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/SPI/SPI.cpp.o
                                        0x4cb1 (size before relaxing)
- .debug_str     0x000000000000dccd      0xc37 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_ZeroDMA/Adafruit_ZeroDMA.cpp.o
+ .debug_str     0x000000000000dce1      0xc37 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_ZeroDMA/Adafruit_ZeroDMA.cpp.o
                                        0x507b (size before relaxing)
- .debug_str     0x000000000000e904      0x293 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
+ .debug_str     0x000000000000e918      0x293 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/Adafruit_NeoPixel/Adafruit_NeoPixel.cpp.o
                                        0x4010 (size before relaxing)
- .debug_str     0x000000000000eb97     0x1a90 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(usbmidi_pluggableusb.cpp.o)
+ .debug_str     0x000000000000ebab     0x1a90 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(usbmidi_pluggableusb.cpp.o)
                                        0x5379 (size before relaxing)
- .debug_str     0x0000000000010627      0x15d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(midi_serialization.cpp.o)
+ .debug_str     0x000000000001063b      0x15d /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USBMIDI/USBMIDI.a(midi_serialization.cpp.o)
                                         0x456 (size before relaxing)
- .debug_str     0x0000000000010784     0x1a38 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/BTD.cpp.o
+ .debug_str     0x0000000000010798     0x1a38 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/BTD.cpp.o
                                        0xc824 (size before relaxing)
- .debug_str     0x00000000000121bc      0x9f5 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3USB.cpp.o
+ .debug_str     0x00000000000121d0      0x9f5 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3USB.cpp.o
                                        0xb905 (size before relaxing)
- .debug_str     0x0000000000012bb1      0x7f9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/Usb.cpp.o
+ .debug_str     0x0000000000012bc5      0x7f9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/Usb.cpp.o
                                        0x559e (size before relaxing)
- .debug_str     0x00000000000133aa      0x515 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
+ .debug_str     0x00000000000133be      0x515 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
                                        0xb451 (size before relaxing)
- .debug_str     0x00000000000138bf      0x4be /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbhub.cpp.o
+ .debug_str     0x00000000000138d3      0x4be /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbhub.cpp.o
                                        0x49e6 (size before relaxing)
- .debug_str     0x0000000000013d7d      0x8b0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/core/variant.cpp.o
+ .debug_str     0x0000000000013d91      0x8b0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/core/variant.cpp.o
                                        0x3745 (size before relaxing)
- .debug_str     0x000000000001462d      0x1f0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(samd21_host.c.o)
+ .debug_str     0x0000000000014641      0x1f0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(samd21_host.c.o)
                                        0x1c4f (size before relaxing)
- .debug_str     0x000000000001481d      0x3f0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(cortex_handlers.c.o)
+ .debug_str     0x0000000000014831      0x3f0 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(cortex_handlers.c.o)
                                         0xf99 (size before relaxing)
- .debug_str     0x0000000000014c0d      0x14b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(delay.c.o)
+ .debug_str     0x0000000000014c21      0x14b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(delay.c.o)
                                         0xf4c (size before relaxing)
- .debug_str     0x0000000000014d58       0x77 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(hooks.c.o)
+ .debug_str     0x0000000000014d6c       0x77 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(hooks.c.o)
                                         0x1e5 (size before relaxing)
- .debug_str     0x0000000000014dcf      0x6a7 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(startup.c.o)
+ .debug_str     0x0000000000014de3      0x6a7 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(startup.c.o)
                                        0x16d6 (size before relaxing)
- .debug_str     0x0000000000015476      0x202 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring.c.o)
+ .debug_str     0x000000000001548a      0x202 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring.c.o)
                                        0x17c7 (size before relaxing)
- .debug_str     0x0000000000015678      0x13e /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_analog.c.o)
+ .debug_str     0x000000000001568c      0x13e /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_analog.c.o)
                                        0x1c39 (size before relaxing)
- .debug_str     0x00000000000157b6       0x76 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_digital.c.o)
+ .debug_str     0x00000000000157ca       0x76 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_digital.c.o)
                                         0xfa1 (size before relaxing)
- .debug_str     0x000000000001582c       0x80 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_private.c.o)
+ .debug_str     0x0000000000015840       0x80 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_private.c.o)
                                         0xfa7 (size before relaxing)
- .debug_str     0x00000000000158ac       0x8f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_shift.c.o)
+ .debug_str     0x00000000000158c0       0x8f /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(wiring_shift.c.o)
                                         0xc23 (size before relaxing)
- .debug_str     0x000000000001593b      0x3f3 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Print.cpp.o)
+ .debug_str     0x000000000001594f      0x3f3 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Print.cpp.o)
                                        0x47b3 (size before relaxing)
- .debug_str     0x0000000000015d2e      0x18e /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Reset.cpp.o)
+ .debug_str     0x0000000000015d42      0x18e /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Reset.cpp.o)
                                        0x3a27 (size before relaxing)
- .debug_str     0x0000000000015ebc       0xaa /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Retarget.cpp.o)
+ .debug_str     0x0000000000015ed0       0xaa /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Retarget.cpp.o)
                                        0x37d6 (size before relaxing)
- .debug_str     0x0000000000015f66      0x24b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SERCOM.cpp.o)
+ .debug_str     0x0000000000015f7a      0x24b /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SERCOM.cpp.o)
                                        0x3ccd (size before relaxing)
- .debug_str     0x00000000000161b1      0x7a7 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(CDC.cpp.o)
+ .debug_str     0x00000000000161c5      0x7a7 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(CDC.cpp.o)
                                        0x50d4 (size before relaxing)
- .debug_str     0x0000000000016958       0xab /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(PluggableUSB.cpp.o)
+ .debug_str     0x000000000001696c       0xab /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(PluggableUSB.cpp.o)
                                        0x3ad3 (size before relaxing)
- .debug_str     0x0000000000016a03     0x1e95 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(USBCore.cpp.o)
+ .debug_str     0x0000000000016a17     0x1e95 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(USBCore.cpp.o)
                                        0x70fb (size before relaxing)
- .debug_str     0x0000000000018898      0x4c5 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Uart.cpp.o)
+ .debug_str     0x00000000000188ac      0x4c5 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Uart.cpp.o)
                                        0x533a (size before relaxing)
- .debug_str     0x0000000000018d5d       0xf9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WMath.cpp.o)
+ .debug_str     0x0000000000018d71       0xf9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WMath.cpp.o)
                                         0x826 (size before relaxing)
- .debug_str     0x0000000000018e56       0xe9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(main.cpp.o)
+ .debug_str     0x0000000000018e6a       0xe9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(main.cpp.o)
                                        0x3825 (size before relaxing)
- .debug_str     0x0000000000018f3f       0xd9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(new.cpp.o)
+ .debug_str     0x0000000000018f53       0xd9 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(new.cpp.o)
                                        0x3870 (size before relaxing)
- .debug_str     0x0000000000019018       0x96 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SAMD21_USBDevice.cpp.o)
+ .debug_str     0x000000000001902c       0x96 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(SAMD21_USBDevice.cpp.o)
                                        0x56fb (size before relaxing)
 
 .debug_frame    0x0000000000000000     0x5154
@@ -8295,9 +8299,9 @@ Cross Reference Table
 
 Symbol                                            File
 ACM::ACM(USBHost*, CDCAsyncOper*)                 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/cdcacm.cpp.o
+ACM::ACM(USBHost*, CDCAsyncOper*)                 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/cdcacm.cpp.o
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/cdcprolific.cpp.o
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/cdc_XR21B1411.cpp.o
-ACM::ACM(USBHost*, CDCAsyncOper*)                 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/cdcacm.cpp.o
 ACM::ClearCommFeature(unsigned short)             /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/cdcacm.cpp.o
 ACM::EndpointXtract(unsigned long, unsigned long, unsigned long, unsigned long, USB_ENDPOINT_DESCRIPTOR const*) /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/cdcacm.cpp.o
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/cdcprolific.cpp.o
@@ -9153,17 +9157,17 @@ String::String(StringSumHelper&&)                 /var/folders/4m/911rs3cj1pzbqd
 String::String(__FlashStringHelper const*)        /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(__FlashStringHelper const*)        /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(char const*)                       /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
-                                                  /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3BT.cpp.o
 String::String(char const*)                       /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
+                                                  /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3BT.cpp.o
 String::String(char)                              /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(char)                              /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(double, unsigned char)             /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(double, unsigned char)             /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(float, unsigned char)              /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(float, unsigned char)              /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
+String::String(int, unsigned char)                /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(int, unsigned char)                /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/PS3BT.cpp.o
-String::String(int, unsigned char)                /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(long, unsigned char)               /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(long, unsigned char)               /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
 String::String(unsigned char, unsigned char)      /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(WString.cpp.o)
@@ -9400,8 +9404,8 @@ USBH_MIDI::SendData(unsigned char*, unsigned char) /var/folders/4m/911rs3cj1pzbq
 USBH_MIDI::SendRawData(unsigned short, unsigned char*) /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
 USBH_MIDI::SendSysEx(unsigned char*, unsigned short, unsigned char) /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
 USBH_MIDI::USBH_MIDI(USBHost*)                    /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
-USBH_MIDI::USBH_MIDI(USBHost*)                    /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_host.cpp.o
+USBH_MIDI::USBH_MIDI(USBHost*)                    /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
 USBH_MIDI::countSysExDataSize(unsigned char*)     /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
 USBH_MIDI::epDataInIndex                          /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/libraries/USB_Host_Library_SAMD-master/usbh_midi.cpp.o
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/usb_host.cpp.o
@@ -10683,8 +10687,8 @@ midiXparser::isSysExMode()                        /var/folders/4m/911rs3cj1pzbqd
 midiXparser::m_channelVoiceMsgMsglen              /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
 midiXparser::m_systemCommonMsglen                 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
 midiXparser::midiXparser()                        /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
-                                                  /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi.cpp.o
 midiXparser::midiXparser()                        /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
+                                                  /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi.cpp.o
 midiXparser::parse(unsigned char)                 /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi.cpp.o
 midiXparser::setMidiMsgFilter(unsigned char)      /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midiXparser.cpp.o
@@ -10887,7 +10891,9 @@ svcHook                                           /var/folders/4m/911rs3cj1pzbqd
 sysTickHook                                       /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(hooks.c.o)
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(cortex_handlers.c.o)
 test_dac()                                        /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/dac.cpp.o
+test_index                                        /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
 test_lights()                                     /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
+test_vals                                         /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/sketch/midi_cv.ino.cpp.o
 tickReset                                         /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(Reset.cpp.o)
                                                   /var/folders/4m/911rs3cj1pzbqdnnsfk13r5w0000gn/T/arduino-sketch-624202FE4806190989526C3C42BDEF74/../arduino-core-cache/core_Seeeduino_samd_seeed_XIAO_m0_9c83071b68ec93873bccdb44591d4a6a.a(delay.c.o)
 tolower                                           /Users/temporary/Library/Arduino15/packages/Seeeduino/tools/arm-none-eabi-gcc/7-2017q4/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc_nano.a(lib_a-tolower.o)

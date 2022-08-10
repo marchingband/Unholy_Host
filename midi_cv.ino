@@ -9,6 +9,7 @@
 #include "handlers.h"
 
 #define USB_MODE_SELECT_PIN 5
+// #define TEST_MODE
 
 int is_device = 0;
 
@@ -73,9 +74,32 @@ void setup()
     usb_host_init();
   }
 }
+//4095
+uint test_vals[] = {
+  0,
+  500,
+  1000,
+  1500,
+  2000,
+  2500,
+  3000,
+  3500,
+};
+uint test_index = 0;
 
 void loop()
 {
+#ifdef TEST_MODE
+  while(1){
+    dac_set_chan_all(test_vals[test_index], test_vals[test_index]);
+    delay(1000);
+    if(test_index < 7){
+      test_index++;
+    } else {
+      test_index = 0;
+    }
+  }
+#endif
   if(is_device)
   {
     usb_device_loop();
