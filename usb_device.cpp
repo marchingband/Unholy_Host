@@ -1,16 +1,22 @@
 #include "Arduino.h"
-#include <usbmidi.h>
+#include "MIDIUSB.h"
 #include "midi.h"
+
+midiEventPacket_t rx;
+uint8_t midi_buf[128];
 
 void usb_device_loop(void)
 {
-    USBMIDI.poll();
-    while (USBMIDI.available()) {
-		// We must read entire available data, so in case we receive incoming
-		// MIDI data, the host wouldn't get stuck.
-		// Serial1.println("usb_device_loop");
-		unsigned char b = USBMIDI.read();
-		midi_device_parse(b);
-	}
-    USBMIDI.flush();
+	do 
+	{
+		rx = MidiUSB.read();
+		if (rx.header != 0) 
+		{
+			midi_device_parse(rx.header);
+			midi_device_parse(rx.byte1);
+			midi_device_parse(rx.byte2);
+			midi_device_parse(rx.byte3);
+		}
+	} 
+	while (rx.header != 0);
 }

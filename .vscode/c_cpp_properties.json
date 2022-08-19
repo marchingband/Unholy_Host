@@ -5,8 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/Users/temporary/Documents/Arduino/libraries/**",
-                "/Users/temporary/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.2/**",
-                "/Users/temporary/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.2/cores/arduino/**"
+                "/Users/temporary/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.3/**",
+                "/Users/temporary/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.3/cores/arduino/**"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -18,7 +18,7 @@
             "cppStandard": "c++98",
             "intelliSenseMode": "macos-clang-x64",
             "forcedInclude": [
-                "/Users/temporary/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.2/cores/arduino/Arduino.h"
+                "/Users/temporary/Library/Arduino15/packages/Seeeduino/hardware/samd/1.8.3/cores/arduino/Arduino.h"
             ]
         }
     ],

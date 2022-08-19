@@ -6,7 +6,6 @@
 #include "handlers.h"
 #include "config.h"
 #include "constants.h"
-#include "midi.h"
 
 #define DAC_1 0
 #define DAC_2 1

@@ -5,7 +5,6 @@
 #include "gates.h"
 #include "dac.h"
 #include "calibration.h"
-#include "rgb_led.h"
 #include "handlers.h"
 
 #define USB_MODE_SELECT_PIN 5
@@ -23,7 +22,6 @@ void test_lights(void)
     gate_set(cnt2, even);
     gates_update();
     cnt2 = even ? cnt2 : cnt2 + 1;
-    rgb_set_color(cnt < 3 ? cnt * (128 / 16) : 0, cnt < 6 ? cnt * (128 / 16) : 0, cnt < 9 ? cnt * (128 / 16) : 0); // test bright white
     delay(100);
   }
 }
@@ -36,10 +34,6 @@ void setup()
   // led
   pinMode( 13, OUTPUT);
   digitalWrite(13, LOW);
-
-  //start the reb led
-  rgb_init();
-  rgb_set_color(100,100,100); // test bright white
 
   // start the shift register
   gates_init();
