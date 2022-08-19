@@ -19,9 +19,9 @@ https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 * click tools->board->Seeed SAMD->Seeeduino XIAO  
 * click tools->manage libraries  
 * search for, and install the following libraries  
-** MIDIUSB  
-** MCP48xx  
-** ShiftRegister74HC595  
+* * MIDIUSB  
+* * MCP48xx  
+* * ShiftRegister74HC595  
 * open a web browser and navigate to https://github.com/marchingband/USB_Host_Library_SAMD  
 * click code->Download Zip  
 * unzip this file into /Arduino/libraries (you will have to create the libraries folder if it does not already exist)  
