@@ -39,12 +39,14 @@ void dac_init()
 
 void dac_set_chan_one(int val)
 {
+    Serial1.println(val);
     dac->setVoltageA(val);
     dac->updateDAC();
 }
 
 void dac_set_chan_two(int val)
 {
+    Serial1.println(val);
     dac->setVoltageB(val);
     dac->updateDAC();
 }
@@ -52,6 +54,7 @@ void dac_set_chan_two(int val)
 void dac_set_chan_three(int val)
 {
     analogWrite(0, map(val, 0, 4095, 0, 1023)); // 0->3.3v with 0->1023 (10 bit) value
+    Serial1.println(val);
 }
 
 void dac_set_chan_all(int val_one, int val_two)
@@ -72,9 +75,9 @@ uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
 
     double volts = (double)(index) / (double)(12.0);
 
-    // char log[200];
-    // sprintf(log, "midi_to_v_oct note:%d clamped_note:%d index:%d volts:%f", note, clamped_note, index, volts );
-    // Serial1.println(log);
+    char log[200];
+    sprintf(log, "midi_to_v_oct note:%d clamped_note:%d index:%d volts:%f", note, clamped_note, index, volts );
+    Serial1.println(log);
 
     // calculate pitch bend
     double pitch_bend_range_volts = PITCH_BEND_RANGE / 12.0;
@@ -84,9 +87,9 @@ uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
     double pitch_bend = pitch_bend_range_volts * pitch_ratio;
     double bent_volts = volts + pitch_bend;
 
-    // char log1[200];
-    // sprintf(log1, "pitch_bend_range_volts:%f pitch_state:%f pitch_state_signed:%f pitch_ratio:%f pitch_bend:%f volts:%f bent_volts:%f", pitch_bend_range_volts, pitch_state, pitch_state_signed, pitch_ratio, pitch_bend, volts, bent_volts);
-    // Serial1.println(log1);
+    char log1[200];
+    sprintf(log1, "pitch_bend_range_volts:%f pitch_state:%f pitch_state_signed:%f pitch_ratio:%f pitch_bend:%f volts:%f bent_volts:%f\n", pitch_bend_range_volts, pitch_state, pitch_state_signed, pitch_ratio, pitch_bend, volts, bent_volts);
+    Serial1.println(log1);
 
     return volts_to_dac_val(bent_volts, num_dac);
 #endif
@@ -193,16 +196,18 @@ void cc_to_dac(uint8_t num_dac, uint8_t value)
 void test_dac(void)
 {
     int base = 2230;
-    for(int i=0; i< 100; i++)
+    for(int i=1000; i< 1100; i++)
     {
+        dac_set_chan_one(1 * i);
+
         // Serial1.println(base + i);
         // dac_set_chan_one(base + i);
         // dac_set_chan_two(base + i);
         // dac_set_chan_three(base + i);
-        dac_set_chan_all(1000,1000);
-        while(1)
-        {
+        // dac_set_chan_all(1000,1000);
             delay(1000);
-        }
+        // while(1)
+        // {
+        // }
     }
 }
