@@ -119,10 +119,20 @@ void CUSTOM_UHD_Handler(void)
 }
 
 void handleBank0(uint32_t epAddr) {
- int rcvd = uhd_byte_count0(epAddr);
- for (int i = 0; i < rcvd; i++)
- {
-   midi_host_parse(bufBk0[i]);
+  int rcvd = uhd_byte_count0(epAddr);
+  for (int i = 0; i < rcvd; i++)
+  {
+    if(bufBk0[i] == 0)
+    {
+      continue;
+    } 
+    else 
+    {
+      midi_host_parse(bufBk0[i]);
+      midi_host_parse(bufBk0[++i]);
+      midi_host_parse(bufBk0[++i]);
+      midi_host_parse(bufBk0[++i]);
+    }
  }
  uhd_ack_in_received0(epAddr);
  uhd_ack_in_ready0(epAddr);
@@ -132,7 +142,17 @@ void handleBank1(uint32_t epAddr) {
  int rcvd = uhd_byte_count1(epAddr);
  for (int i = 0; i < rcvd; i++)
  {
-   midi_host_parse(bufBk1[i]);
+    if(bufBk1[i] == 0)
+    {
+      continue;
+    } 
+    else 
+    {
+      midi_host_parse(bufBk1[i]);
+      midi_host_parse(bufBk1[++i]);
+      midi_host_parse(bufBk1[++i]);
+      midi_host_parse(bufBk1[++i]);
+    }
  }
  uhd_ack_in_received1(epAddr);
  uhd_ack_in_ready1(epAddr);

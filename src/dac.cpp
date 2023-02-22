@@ -13,11 +13,11 @@ double volts_hz_v_lut[NUM_NOTES_HZ_V];
 
 void init_hz_v_lut(void)
 {
-    volts_hz_v_lut[0] = 0.0;         // place the 1st hz/v
-    volts_hz_v_lut[1] = 0.125 / 2;   // place the 2nd hz/v
-    for(int note=2; note<NUM_NOTES_HZ_V; note++)
+    volts_hz_v_lut[0] = 0.0;       // place the 1st hz/v
+    volts_hz_v_lut[1] = 0.125 / 2; // place the 2nd hz/v
+    for (int note = 2; note < NUM_NOTES_HZ_V; note++)
     {
-        double val = volts_hz_v_lut[note - 1]  * pow(2.0, 1.0 / 12.0);
+        double val = volts_hz_v_lut[note - 1] * pow(2.0, 1.0 / 12.0);
         volts_hz_v_lut[note] = val;
     }
 }
@@ -39,14 +39,14 @@ void dac_init()
 
 void dac_set_chan_one(int val)
 {
-    Serial1.println(val);
+    // Serial1.println(val);
     dac->setVoltageA(val);
     dac->updateDAC();
 }
 
 void dac_set_chan_two(int val)
 {
-    Serial1.println(val);
+    // Serial1.println(val);
     dac->setVoltageB(val);
     dac->updateDAC();
 }
@@ -54,7 +54,7 @@ void dac_set_chan_two(int val)
 void dac_set_chan_three(int val)
 {
     analogWrite(0, map(val, 0, 4095, 0, 1023)); // 0->3.3v with 0->1023 (10 bit) value
-    Serial1.println(val);
+    // Serial1.println(val);
 }
 
 void dac_set_chan_all(int val_one, int val_two)
@@ -66,7 +66,8 @@ void dac_set_chan_all(int val_one, int val_two)
 
 uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
 {
-    int clamped_note = (note > V_OCT_MAX) ? V_OCT_MAX : (note < V_OCT_MIN) ? V_OCT_MIN : note;
+    int clamped_note = (note > V_OCT_MAX) ? V_OCT_MAX : (note < V_OCT_MIN) ? V_OCT_MIN
+                                                                           : note;
     int index = clamped_note - V_OCT_MIN;
 
 #ifdef CALIBRATION_MODE
@@ -75,9 +76,9 @@ uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
 
     double volts = (double)(index) / (double)(12.0);
 
-    char log[200];
-    sprintf(log, "midi_to_v_oct note:%d clamped_note:%d index:%d volts:%f", note, clamped_note, index, volts );
-    Serial1.println(log);
+    // char log[200];
+    // sprintf(log, "midi_to_v_oct note:%d clamped_note:%d index:%d volts:%f", note, clamped_note, index, volts);
+    // Serial1.println(log);
 
     // calculate pitch bend
     double pitch_bend_range_volts = PITCH_BEND_RANGE / 12.0;
@@ -87,9 +88,16 @@ uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
     double pitch_bend = pitch_bend_range_volts * pitch_ratio;
     double bent_volts = volts + pitch_bend;
 
-    char log1[200];
-    sprintf(log1, "pitch_bend_range_volts:%f pitch_state:%f pitch_state_signed:%f pitch_ratio:%f pitch_bend:%f volts:%f bent_volts:%f\n", pitch_bend_range_volts, pitch_state, pitch_state_signed, pitch_ratio, pitch_bend, volts, bent_volts);
-    Serial1.println(log1);
+    // char log1[200];
+    // sprintf(log1, "pitch_bend_range_volts:%f pitch_state:%f pitch_state_signed:%f pitch_ratio:%f pitch_bend:%f volts:%f bent_volts:%f\n", 
+    //     pitch_bend_range_volts, 
+    //     pitch_state, 
+    //     pitch_state_signed, 
+    //     pitch_ratio, 
+    //     pitch_bend, 
+    //     volts, 
+    //     bent_volts);
+    // Serial1.println(log1);
 
     return volts_to_dac_val(bent_volts, num_dac);
 #endif
@@ -97,7 +105,8 @@ uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
 
 uint16_t midi_to_hz_v(uint8_t num_dac, uint8_t note)
 {
-    int clamped_note = note > HZ_V_MAX ? HZ_V_MAX : note < HZ_V_MIN ? HZ_V_MIN : note;
+    int clamped_note = note > HZ_V_MAX ? HZ_V_MAX : note < HZ_V_MIN ? HZ_V_MIN
+                                                                    : note;
     int index = clamped_note - HZ_V_MIN;
     double volts = volts_hz_v_lut[index];
 
@@ -131,11 +140,11 @@ void note_to_dac(uint8_t num_dac, uint8_t note, bool is_v_oct)
     uint16_t val = is_v_oct ? midi_to_v_oct(num_dac, note) : midi_to_hz_v(num_dac, note);
 #endif
 
-    if(num_dac == 0)
+    if (num_dac == 0)
     {
         dac_set_chan_one(val);
     }
-    else if(num_dac == 1)
+    else if (num_dac == 1)
     {
         dac_set_chan_two(val);
     }
@@ -155,11 +164,11 @@ void velocity_to_dac(uint8_t num_dac, uint8_t velocity)
     // sprintf(log1, "velocity_to_dac velocity:%d val:%d volts:%f velocity_d:%f", velocity ,val, volts, velocity_d);
     // Serial1.println(log1);
 
-    if(num_dac == 0)
+    if (num_dac == 0)
     {
         dac_set_chan_one(val);
     }
-    else if(num_dac == 1)
+    else if (num_dac == 1)
     {
         dac_set_chan_two(val);
     }
@@ -178,12 +187,12 @@ void cc_to_dac(uint8_t num_dac, uint8_t value)
     // char log1[100];
     // sprintf(log1, "cc_to_dac value:%d val:%d volts:%f value_d:%f", value ,val, volts, value_d);
     // Serial1.println(log1);
-    
-    if(num_dac == 0)
+
+    if (num_dac == 0)
     {
         dac_set_chan_one(val);
     }
-    else if(num_dac == 1)
+    else if (num_dac == 1)
     {
         dac_set_chan_two(val);
     }
@@ -196,7 +205,7 @@ void cc_to_dac(uint8_t num_dac, uint8_t value)
 void test_dac(void)
 {
     int base = 2230;
-    for(int i=1000; i< 1100; i++)
+    for (int i = 1000; i < 1100; i++)
     {
         dac_set_chan_one(1 * i);
 
@@ -205,7 +214,7 @@ void test_dac(void)
         // dac_set_chan_two(base + i);
         // dac_set_chan_three(base + i);
         // dac_set_chan_all(1000,1000);
-            delay(1000);
+        delay(1000);
         // while(1)
         // {
         // }

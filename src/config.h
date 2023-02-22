@@ -3,7 +3,7 @@
 
 #include "constants.h"
 
-#define CALIBRATION_MODE // uncomment this line to enter calibration mode
+// #define CALIBRATION_MODE // uncomment this line to enter calibration mode
 
 #define MONOPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
 
@@ -43,8 +43,6 @@
 #define RESET_1_BEATS    4    // 0(just at the start)...infinity
 #define RESET_2_BEATS    16   // 0(just at the start)...infinity
 #define RESET_3_BEATS    32   // 0(just at the start)...infinity
-
-// #define USE_SUSTAIN
 
 // TRANSPORT sets gate high after MIDI_START or MIDI_CONTINUE, and low after MIDI_STOP
 // NOTE_ON_OFF sets gate high after NOTE_ON and low after NOTE_OFF, listening on n note number

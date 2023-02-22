@@ -10,7 +10,7 @@ elif [ "$1" == "flash" ]; then
     echo "done"
 elif [ "$1" == "compile" ]; then 
     echo "compiling..."
-    pio run``
+    pio run
     echo "done"
 elif [ "$1" == "clean" ]; then 
     echo "compiling..."

@@ -63,9 +63,9 @@ void handle_clock()
 
 void handle_transport(uint8_t code)
 {
-    char log[100];
-    sprintf(log, "transport %s",  code == MIDI_START ? "start" : code == MIDI_CONTINUE ? "continue" : "stop");
-    Serial1.println((const char *)log);
+    // char log[100];
+    // sprintf(log, "transport %s",  code == MIDI_START ? "start" : code == MIDI_CONTINUE ? "continue" : "stop");
+    // Serial1.println((const char *)log);
     gates_handle_transport(code);
 }
 
