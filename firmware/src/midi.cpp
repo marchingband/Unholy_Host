@@ -23,24 +23,35 @@ int hi = 0;
 uint8_t *msg;
 uint16_t pitch_bend_state = 8192;
 
+extern struct config_t *config;
+
 void handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
     // char log[100];
     // sprintf(log, "handle_note_on_off note-on chan:%d note:%d vel:%d", channel, note, velocity);
     // Serial1.println((const char *)log);
-#ifdef MONOPHONIC
-    cv_1_handle_note_on_off(channel, note, velocity, is_note_on);
-    cv_2_handle_note_on_off(channel, note, velocity, is_note_on);
-    cv_3_handle_note_on_off(channel, note, velocity, is_note_on);
-    gates_handle_monophonic_note_on_off(channel, note, is_note_on);
-#endif
-#ifdef DUOPHONIC
-    duophonic_handle_note_on_off(channel, note, velocity, is_note_on);
-    cv_3_handle_note_on_off(channel, note, velocity, is_note_on);
-#endif
-#ifdef TRIPHONIC
-    triphonic_handle_note_on_off(channel, note, velocity, is_note_on);
-#endif
+// #ifdef MONOPHONIC
+    if(config->POLYPHONY_MODE == MONOPHONIC_MODE)
+    {
+        cv_1_handle_note_on_off(channel, note, velocity, is_note_on);
+        cv_2_handle_note_on_off(channel, note, velocity, is_note_on);
+        cv_3_handle_note_on_off(channel, note, velocity, is_note_on);
+        gates_handle_monophonic_note_on_off(channel, note, is_note_on);
+    }
+// #endif
+// #ifdef DUOPHONIC
+    else if(config->POLYPHONY_MODE == DUOPHONIC_MODE)
+    {
+        duophonic_handle_note_on_off(channel, note, velocity, is_note_on);
+        cv_3_handle_note_on_off(channel, note, velocity, is_note_on);
+    }
+// #endif
+// #ifdef TRIPHONIC
+    else if(config->POLYPHONY_MODE == TRIPHONIC_MODE)
+    {
+        triphonic_handle_note_on_off(channel, note, velocity, is_note_on);
+    }
+// #endif
     gates_handle_note_on_off(channel, note, velocity, is_note_on);
     gates_update();
 }
@@ -169,12 +180,48 @@ void handle_realtime_midi(uint8_t *msg)
 
 void handle_sysex(){
     uint len = midiDeviceParser.getSysExMsgLen();
+    
     Serial1.print("GOT SYSEX len ");
     Serial1.println(len);
-    if(len > 50){
-        decode_config(&sysex_buf[1]);
-    } else {
+
+    if( (sysex_buf[1] != MANUFACTURER_ID_1) ||
+        (sysex_buf[2] != MANUFACTURER_ID_2) ||
+        (sysex_buf[3] != MANUFACTURER_ID_3))
+    {
+        Serial1.println("MANUFACTURER_ID incorrect");
+        return; // not for us
+    }
+    else
+    {
+        Serial1.println("MANUFACTURER_ID matches");
+    }
+
+    if(sysex_buf[4] == SYSEX_TYPE_REQUEST_CONFIG)
+    {
+        Serial1.println("got SYSEX_TYPE_REQUEST_CONFIG");
         usb_device_send_config();
+    } 
+    else if(sysex_buf[4] == SYSEX_TYPE_CONFIG)
+    {
+        Serial1.println("got SYSEX_TYPE_CONFIG");
+        decode_config(&sysex_buf[5]);
+        usb_device_send_ack();
+    } 
+    else if(sysex_buf[4] == SYSEX_TYPE_CAL_MODE_ON)
+    {
+        Serial1.println("got SYSEX_TYPE_CAL_MODE_ON");
+        config->calibration_mode = 1;
+        usb_device_send_ack();
+    } 
+    else if(sysex_buf[4] == SYSEX_TYPE_CAL_MODE_OFF)
+    {
+        Serial1.println("got SYSEX_TYPE_CAL_MODE_OFF");
+        config->calibration_mode = 0;
+        usb_device_send_ack();
+    } 
+    else 
+    {
+        Serial1.println("got unknown SYSEX TYPE");
     }
 }
 

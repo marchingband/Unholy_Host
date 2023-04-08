@@ -35,151 +35,166 @@ struct stack_t tri_stack = {
     .pointer = 0,
 };
 
+extern struct config_t *config;
+
 void duophonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
-#ifdef DUOPHONIC
-    if(is_note_on)
+// #ifdef DUOPHONIC
+    if(config->POLYPHONY_MODE == DUOPHONIC_MODE)
     {
-        if(duo_voice_1_free)
+        if(is_note_on)
         {
-            push_note(&duo_stack, note);
-            duo_voice_1_free = false;
-            duo_voice_1_note = note;
-            note_to_dac(0, note, CV_1_SCALE == V_OCT);
-            gates_handle_duophonic_note_on_off(channel, 1, is_note_on);
-        }
-        else if(duo_voice_2_free)
-        {
-            push_note(&duo_stack, note);
-            duo_voice_2_free = false;
-            duo_voice_2_note = note;
-            note_to_dac(1, note, CV_1_SCALE == V_OCT);
-            gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
-        }
-        else
-        {
-            push_note(&duo_stack, note);
-            set_duo();
-        }
-    }
-    else // it's note off
-    {
-        remove_note(&duo_stack, note);
-        if(duo_stack.pointer > 1) // we need to replace it
-        {
-            set_duo();
-        }
-        else // we need to close a gate
-        {
-            if(duo_voice_1_note == note)
+            if(duo_voice_1_free)
             {
-                duo_voice_1_free = true;
+                push_note(&duo_stack, note);
+                duo_voice_1_free = false;
+                duo_voice_1_note = note;
+                note_to_dac(0, note, config->CV_1_SCALE == V_OCT);
                 gates_handle_duophonic_note_on_off(channel, 1, is_note_on);
             }
-            else if(duo_voice_2_note == note)
+            else if(duo_voice_2_free)
             {
-                duo_voice_2_free = true;
+                push_note(&duo_stack, note);
+                duo_voice_2_free = false;
+                duo_voice_2_note = note;
+                note_to_dac(1, note, config->CV_1_SCALE == V_OCT);
                 gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
+            }
+            else
+            {
+                push_note(&duo_stack, note);
+                set_duo();
+            }
+        }
+        else // it's note off
+        {
+            remove_note(&duo_stack, note);
+            if(duo_stack.pointer > 1) // we need to replace it
+            {
+                set_duo();
+            }
+            else // we need to close a gate
+            {
+                if(duo_voice_1_note == note)
+                {
+                    duo_voice_1_free = true;
+                    gates_handle_duophonic_note_on_off(channel, 1, is_note_on);
+                }
+                else if(duo_voice_2_note == note)
+                {
+                    duo_voice_2_free = true;
+                    gates_handle_duophonic_note_on_off(channel, 2, is_note_on);
+                }
             }
         }
     }
-#endif
+// #endif
 }
 
 void triphonic_process_event(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
-#ifdef TRIPHONIC
-    if(is_note_on)
+// #ifdef TRIPHONIC
+    if(config->POLYPHONY_MODE == TRIPHONIC_MODE)
     {
-        if(tri_voice_1_free)
+
+        if(is_note_on)
         {
-            push_note(&tri_stack, note);
-            tri_voice_1_free = false;
-            tri_voice_1_note = note;
-            note_to_dac(0, note, CV_1_SCALE == V_OCT);
-            gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
-        }
-        else if(tri_voice_2_free)
-        {
-            push_note(&tri_stack, note);
-            tri_voice_2_free = false;
-            tri_voice_2_note = note;
-            note_to_dac(1, note, CV_1_SCALE == V_OCT);
-            gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
-        }
-        else if(tri_voice_3_free)
-        {
-            push_note(&tri_stack, note);
-            tri_voice_3_free = false;
-            tri_voice_3_note = note;
-            note_to_dac(2, note, CV_1_SCALE == V_OCT);
-            gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
-        }
-        else
-        {
-            push_note(&tri_stack, note);
-            set_tri();
-        }
-    }
-    else // it's note off
-    {
-        remove_note(&tri_stack, note);
-        if(tri_stack.pointer > 2) // we need to replace it
-        {
-            set_tri();
-        }
-        else // we need to close a gate
-        {
-            if(tri_voice_1_note == note)
+            if(tri_voice_1_free)
             {
-                tri_voice_1_free = true;
+                push_note(&tri_stack, note);
+                tri_voice_1_free = false;
+                tri_voice_1_note = note;
+                note_to_dac(0, note, config->CV_1_SCALE == V_OCT);
                 gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
             }
-            else if(tri_voice_2_note == note)
+            else if(tri_voice_2_free)
             {
-                tri_voice_2_free = true;
+                push_note(&tri_stack, note);
+                tri_voice_2_free = false;
+                tri_voice_2_note = note;
+                note_to_dac(1, note, config->CV_1_SCALE == V_OCT);
                 gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
             }
-            else if(tri_voice_3_note == note)
+            else if(tri_voice_3_free)
             {
-                tri_voice_3_free = true;
+                push_note(&tri_stack, note);
+                tri_voice_3_free = false;
+                tri_voice_3_note = note;
+                note_to_dac(2, note, config->CV_1_SCALE == V_OCT);
                 gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
+            }
+            else
+            {
+                push_note(&tri_stack, note);
+                set_tri();
+            }
+        }
+        else // it's note off
+        {
+            remove_note(&tri_stack, note);
+            if(tri_stack.pointer > 2) // we need to replace it
+            {
+                set_tri();
+            }
+            else // we need to close a gate
+            {
+                if(tri_voice_1_note == note)
+                {
+                    tri_voice_1_free = true;
+                    gates_handle_triphonic_note_on_off(channel, 1, is_note_on);
+                }
+                else if(tri_voice_2_note == note)
+                {
+                    tri_voice_2_free = true;
+                    gates_handle_triphonic_note_on_off(channel, 2, is_note_on);
+                }
+                else if(tri_voice_3_note == note)
+                {
+                    tri_voice_3_free = true;
+                    gates_handle_triphonic_note_on_off(channel, 3, is_note_on);
+                }
             }
         }
     }
-#endif
+// #endif
 }
 
 void set_tri(void)
 {
-#ifdef TRIPHONIC
-    uint8_t a = CV_1_AND_2_AND_3_MODE == HIGHEST ? pop_highest(&tri_stack) : CV_1_AND_2_AND_3_MODE == LOWEST ? pop_lowest(&tri_stack) : pop_last(&tri_stack);
-    uint8_t b = CV_1_AND_2_AND_3_MODE == HIGHEST ? pop_highest(&tri_stack) : CV_1_AND_2_AND_3_MODE == LOWEST ? pop_lowest(&tri_stack) : pop_last(&tri_stack);
-    uint8_t c = CV_1_AND_2_AND_3_MODE == HIGHEST ? pop_highest(&tri_stack) : CV_1_AND_2_AND_3_MODE == LOWEST ? pop_lowest(&tri_stack) : pop_last(&tri_stack);
-    push_note(&tri_stack, c);
-    push_note(&tri_stack, b);
-    push_note(&tri_stack, a);
-    tri_voice_1_note = a;
-    tri_voice_2_note = b;
-    tri_voice_3_note = c;
-    note_to_dac(0, tri_voice_1_note, CV_1_SCALE == V_OCT);
-    note_to_dac(1, tri_voice_2_note, CV_1_SCALE == V_OCT);
-    note_to_dac(2, tri_voice_3_note, CV_1_SCALE == V_OCT);
-#endif
+// #ifdef TRIPHONIC
+    if(config->POLYPHONY_MODE == TRIPHONIC_MODE)
+    {
+        uint8_t a = config->CV_1_AND_2_AND_3_MODE == HIGHEST ? pop_highest(&tri_stack) : config->CV_1_AND_2_AND_3_MODE == LOWEST ? pop_lowest(&tri_stack) : pop_last(&tri_stack);
+        uint8_t b = config->CV_1_AND_2_AND_3_MODE == HIGHEST ? pop_highest(&tri_stack) : config->CV_1_AND_2_AND_3_MODE == LOWEST ? pop_lowest(&tri_stack) : pop_last(&tri_stack);
+        uint8_t c = config->CV_1_AND_2_AND_3_MODE == HIGHEST ? pop_highest(&tri_stack) : config->CV_1_AND_2_AND_3_MODE == LOWEST ? pop_lowest(&tri_stack) : pop_last(&tri_stack);
+        push_note(&tri_stack, c);
+        push_note(&tri_stack, b);
+        push_note(&tri_stack, a);
+        tri_voice_1_note = a;
+        tri_voice_2_note = b;
+        tri_voice_3_note = c;
+        note_to_dac(0, tri_voice_1_note, config->CV_1_SCALE == V_OCT);
+        note_to_dac(1, tri_voice_2_note, config->CV_1_SCALE == V_OCT);
+        note_to_dac(2, tri_voice_3_note, config->CV_1_SCALE == V_OCT);
+    }
+// #endif
 }
 
 void set_duo(void)
 {
-#ifdef DUOPHONIC
-    uint8_t a = CV_1_AND_2_MODE == HIGHEST ? pop_highest(&duo_stack) : CV_1_AND_2_MODE == LOWEST ? pop_lowest(&duo_stack) : pop_last(&duo_stack);
-    uint8_t b = CV_1_AND_2_MODE == HIGHEST ? pop_highest(&duo_stack) : CV_1_AND_2_MODE == LOWEST ? pop_lowest(&duo_stack) : pop_last(&duo_stack);
-    push_note(&duo_stack, b);
-    push_note(&duo_stack, a);
-    duo_voice_1_note = a;
-    duo_voice_2_note = b;
-    note_to_dac(0, duo_voice_1_note, CV_1_SCALE == V_OCT);
-    note_to_dac(1, duo_voice_2_note, CV_1_SCALE == V_OCT);
-#endif
+// #ifdef DUOPHONIC
+    if(config->POLYPHONY_MODE == DUOPHONIC_MODE)
+    {
+        uint8_t a = config->CV_1_AND_2_MODE == HIGHEST ? pop_highest(&duo_stack) : config->CV_1_AND_2_MODE == LOWEST ? pop_lowest(&duo_stack) : pop_last(&duo_stack);
+        uint8_t b = config->CV_1_AND_2_MODE == HIGHEST ? pop_highest(&duo_stack) : config->CV_1_AND_2_MODE == LOWEST ? pop_lowest(&duo_stack) : pop_last(&duo_stack);
+        push_note(&duo_stack, b);
+        push_note(&duo_stack, a);
+        duo_voice_1_note = a;
+        duo_voice_2_note = b;
+        note_to_dac(0, duo_voice_1_note, config->CV_1_SCALE == V_OCT);
+        note_to_dac(1, duo_voice_2_note, config->CV_1_SCALE == V_OCT);
+    }
+// #endif
 }
 
 void push_note(struct stack_t *data, uint8_t note)

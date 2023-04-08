@@ -9,6 +9,7 @@
 
 struct config_t {
     bool valid;
+    bool calibration_mode;
     uint8_t POLYPHONY_MODE;
     uint8_t CV_1_SOURCE;
     uint8_t CV_2_SOURCE;
@@ -154,5 +155,6 @@ void encode_config(uint8_t *dest);
 void decode_config(uint8_t *src);
 void encode_float(uint8_t *dest, double in);
 double decode_float(uint8_t *src);
+void save_config( void );
 
 #endif

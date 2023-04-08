@@ -9,6 +9,8 @@ struct config_t *config;
 
 void build_default_config (void)
 {
+    config_default.calibration_mode =         false;
+    
     config_default.POLYPHONY_MODE =           MONOPHONIC_MODE;
     config_default.CV_1_SOURCE =              NOTE;
     config_default.CV_2_SOURCE =              NOTE;
@@ -80,11 +82,12 @@ void build_default_config (void)
     config_default.CAL_3_6 =                  5.148;
 }
 
+FlashStorage(config_store, struct config_t);
+
 void init_config( void )
 {
     build_default_config();
     config = &_config;
-    FlashStorage(config_store, struct config_t);
     _config = config_store.read();
     if(_config.valid == false)
     {
@@ -98,6 +101,12 @@ void init_config( void )
     {
         Serial1.println("flash storage found");
     }
+}
+
+void save_config( void )
+{
+    config_store.write(_config);
+    Serial1.println("update flash storage done");
 }
 
 void encode_config(uint8_t *dest)
