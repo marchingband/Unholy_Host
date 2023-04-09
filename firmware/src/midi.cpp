@@ -27,9 +27,9 @@ extern struct config_t *config;
 
 void handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
-    // char log[100];
-    // sprintf(log, "handle_note_on_off note-on chan:%d note:%d vel:%d", channel, note, velocity);
-    // Serial1.println((const char *)log);
+    char log[100];
+    sprintf(log, "handle_note_on_off note-on chan:%d note:%d vel:%d", channel, note, velocity);
+    Serial1.println((const char *)log);
 // #ifdef MONOPHONIC
     if(config->POLYPHONY_MODE == MONOPHONIC_MODE)
     {
@@ -245,8 +245,8 @@ uint8_t is_sysex = 0;
 
 void midi_device_parse(uint8_t in)
 {
-    Serial1.println("in");
-    Serial1.println(in);
+    // Serial1.println("in");
+    // Serial1.println(in);
     uint8_t is_msg = midiDeviceParser.parse( in );
     if ( is_msg )  // Do we received a channel voice msg ?
     {

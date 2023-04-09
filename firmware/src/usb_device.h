@@ -4,6 +4,7 @@
 #define MANUFACTURER_ID_1 0x00
 #define MANUFACTURER_ID_2 0x21
 #define MANUFACTURER_ID_3 0x75 // 117, ascii value for "u" for ultrapalace, should be between 0x60 and 0x7F for sysex spec
+
 #define SYSEX_TYPE_CONFIG 0x00
 #define SYSEX_TYPE_ACK 0x01
 #define SYSEX_TYPE_REQUEST_CONFIG 0x02

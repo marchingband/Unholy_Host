@@ -2,6 +2,7 @@
 #include <FlashStorage.h>
 #include "calibration.h"
 #include "config.h"
+#include "handlers.h"
 
 struct config_t config_default;
 struct config_t _config;
@@ -203,10 +204,22 @@ void encode_config(uint8_t *dest)
     i += 4;
     encode_float(&dest[i], config->CAL_3_6);
     i += 4;
+
+    // add the checksum
+    dest[SYSEX_CONFIG_MSG_LEN] = calculate_checksum(dest, SYSEX_CONFIG_MSG_LEN);
 }
 
 void decode_config(uint8_t *src)
 {
+    uint8_t checksum = src[SYSEX_CONFIG_MSG_LEN];
+    uint8_t check = calculate_checksum(src, SYSEX_CONFIG_MSG_LEN);
+
+    if(check != checksum){
+        Serial1.println("checksum failed!");
+        return;
+    }
+    Serial1.println("checksum passed");
+
     config->POLYPHONY_MODE = src[0];
     config->CV_1_SOURCE = src[1];
     config->CV_2_SOURCE = src[2];
@@ -300,6 +313,11 @@ void decode_config(uint8_t *src)
     config->CAL_3_6 = decode_float(&src[i]);
     i += 4;
 
+    // update all the handlers so it actually changes immidiately
+    init_handlers();
+
+    // save to disk
+    save_config();
 }
 
 void encode_float(uint8_t *dest, double in)
@@ -311,7 +329,7 @@ void encode_float(uint8_t *dest, double in)
 
     sprintf(buf, "%5.3f", in);
 
-    Serial1.println(buf);
+    // Serial1.println(buf);
 
     a[0] = buf[0]; a[1]=0;
     //skip decimal point
@@ -325,9 +343,9 @@ void encode_float(uint8_t *dest, double in)
     y = atoi(c);
     z = atoi(d);
 
-    char log[50];
-    sprintf(log, "encoded %d%d%d%d", w, x, y, z);
-    Serial1.println(log);
+    // char log[50];
+    // sprintf(log, "encoded %d%d%d%d", w, x, y, z);
+    // Serial1.println(log);
 
     dest[0] = w;
     dest[1] = x;
@@ -337,9 +355,9 @@ void encode_float(uint8_t *dest, double in)
 
 double decode_float(uint8_t *src)
 {
-    char log[50];
-    sprintf(log, "%d,%d,%d,%d", src[0], src[1], src[2], src[3]);
-    Serial1.println(log);
+    // char log[50];
+    // sprintf(log, "%d,%d,%d,%d", src[0], src[1], src[2], src[3]);
+    // Serial1.println(log);
     
     double out = 0.0;
     out += src[0];
@@ -347,8 +365,17 @@ double decode_float(uint8_t *src)
     out += (((double)src[2]) * 0.01);
     out += (((double)src[3]) * 0.001);
 
-    sprintf(log, "parsed %f", out);
-    Serial1.println(log);
+    // sprintf(log, "parsed %f", out);
+    // Serial1.println(log);
 
     return out;
+}
+
+uint8_t calculate_checksum(uint8_t *data, int len)
+{
+  uint8_t res = 0x7f;
+  for(int i = 0; i < len; i++) {
+    res ^= data[i];
+  }
+  return res;
 }

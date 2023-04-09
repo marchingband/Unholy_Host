@@ -5,7 +5,8 @@
 #include "constants.h"
 #include <stdint.h>
 #include <stdbool.h>
-// #include "Arduino.h"
+
+#define SYSEX_CONFIG_MSG_LEN 132
 
 struct config_t {
     bool valid;
@@ -81,6 +82,16 @@ struct config_t {
     double CAL_3_6;
 };
 
+void init_config( void );
+void encode_config(uint8_t *dest);
+void decode_config(uint8_t *src);
+void encode_float(uint8_t *dest, double in);
+double decode_float(uint8_t *src);
+void save_config( void );
+uint8_t calculate_checksum(uint8_t *data, int len);
+
+#endif
+
 // #define CALIBRATION_MODE // uncomment this line to enter calibration mode
 
 // #define MONOPHONIC // polyphony mode: MONOPHONIC || DUOPHONIC || TRIPHONIC 
@@ -149,12 +160,3 @@ struct config_t {
 // #define GATE_8_SOURCE    CLOCK_8 // NOTE_ON_OFF || DUOPHONIC_ON_OFF_VOICE_1 || DUOPHONIC_ON_OFF_VOICE_2 || TRIPHONIC_ON_OFF_VOICE_1 || TRIPHONIC_ON_OFF_VOICE_2 || TRIPHONIC_ON_OFF_VOICE_3 || CC1_HI_LOW || CC2_HI_LOW || CC3_HI_LOW || RESET_1 || RESET_2 || RESET_3 || TRANSPORT || CLOCK_1 || CLOCK_2 || CLOCK_3 || CLOCK_4 || CLOCK_5 || CLOCK_6 || CLOCK_7 || CLOCK_8
 // #define GATE_8_NOTE      G_6          // C_2...G8 || 0...127
 // // #define GATE_8_INVERT
-
-void init_config( void );
-void encode_config(uint8_t *dest);
-void decode_config(uint8_t *src);
-void encode_float(uint8_t *dest, double in);
-double decode_float(uint8_t *src);
-void save_config( void );
-
-#endif
