@@ -7,18 +7,29 @@
 midiEventPacket_t rx;
 uint8_t midi_buf[128];
 
+#define USB_MIDI_MISC 0x0
+#define USB_MIDI_SYSTEM_COMMON 0x5
+#define SINGLE_BYTE 0xF
+
 void usb_device_loop(void)
 {
 	do 
 	{
 		rx = MidiUSB.read();
-		if (rx.header != 0) 
-		{
-			// midi_device_parse(rx.header);
-			midi_device_parse(rx.byte1);
-			midi_device_parse(rx.byte2);
-			midi_device_parse(rx.byte3);
-		}
+        // Serial1.println(rx.header);
+        switch(rx.header){
+            case USB_MIDI_MISC: // junk
+                break;
+            case USB_MIDI_SYSTEM_COMMON: // clock
+            case SINGLE_BYTE: // clock
+                midi_device_parse(rx.byte1);
+                break;
+            default:
+                midi_device_parse(rx.byte1);
+                midi_device_parse(rx.byte2);
+                midi_device_parse(rx.byte3);
+                break;
+        }
 	} 
 	while (rx.header != 0);
 }
