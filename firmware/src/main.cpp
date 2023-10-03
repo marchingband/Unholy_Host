@@ -30,12 +30,13 @@ void test_lights(void)
 
 void setup()
 {
-  Serial1.begin(9600);
-  Serial1.println("lets convert some USB MIDI to CV and GATE signals hey bud?");
+  Serial1.begin(31250);
+  // Serial1.begin(9600);
+  // Serial1.println("lets convert some USB MIDI to CV and GATE signals hey bud?");
 
   // led
   pinMode( 13, OUTPUT);
-  digitalWrite(13, LOW);
+  digitalWrite(13, HIGH);
 
   // start the shift register
   gates_init();
@@ -64,11 +65,11 @@ void setup()
   is_device = digitalRead(USB_MODE_SELECT_PIN);
   if(is_device)
   {
-    Serial1.println("USB mode select pin set to DEVICE");
+    // Serial1.println("USB mode select pin set to DEVICE");
   }
   else
   {
-    Serial1.println("USB mode select pin set to HOST");
+    // Serial1.println("USB mode select pin set to HOST");
     // start the usb host
     usb_host_init();
   }
@@ -107,5 +108,6 @@ void loop()
   {
     usb_host_loop();
   }
+  midi_uart_poll();
   clear_triggers();
 }

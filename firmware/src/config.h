@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define SYSEX_CONFIG_MSG_LEN 132
+#define SYSEX_CONFIG_MSG_LEN 134
 
 struct config_t {
     bool valid;
@@ -59,6 +59,8 @@ struct config_t {
     uint8_t GATE_8_SOURCE;
     uint8_t GATE_8_NOTE;
     uint8_t GATE_8_INVERT;
+    uint8_t MIDI_CHANNEL;
+    uint8_t MERGE_MIDI;
     double CAL_1_0;
     double CAL_1_1;
     double CAL_1_2;

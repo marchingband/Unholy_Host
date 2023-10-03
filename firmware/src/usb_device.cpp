@@ -34,13 +34,11 @@ void usb_device_loop(void)
 	while (rx.header != 0);
 }
 
-const uint8_t buffer[] = {0xF0, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0xF7};
-
 #define MSG_LEN (SYSEX_CONFIG_MSG_LEN + 7)
 
 void usb_device_send_config(void)
 {
-    //config is 132 bytes (add 2 for systex header and footer, 3 for device ids, 1 for sysex type, 1 for the checksum)
+    //config is 134 bytes (add 2 for systex header and footer, 3 for device ids, 1 for sysex type, 1 for the checksum)
 	uint8_t config_array[MSG_LEN] = {0};
     config_array[0] = 0xF0;
     config_array[1] = MANUFACTURER_ID_1;

@@ -60,6 +60,8 @@ void build_default_config (void)
     config_default.GATE_8_SOURCE =            MONOPHONIC_ON_OFF;
     config_default.GATE_8_NOTE =              C_6;
     config_default.GATE_8_INVERT =            0;
+    config_default.MIDI_CHANNEL =             0;
+    config_default.MERGE_MIDI   =             0;
     config_default.CAL_1_0 =                  0.002;
     config_default.CAL_1_1 =                  0.077;
     config_default.CAL_1_2 =                  1.074;
@@ -92,22 +94,22 @@ void init_config( void )
     _config = config_store.read();
     if(_config.valid == false)
     {
-        Serial1.println("initializing flash storage");
+        // Serial1.println("initializing flash storage");
         _config = config_default;
         _config.valid = true;
         config_store.write(_config);
-        Serial1.println("initializing flash storage done");
+        // Serial1.println("initializing flash storage done");
     }
     else
     {
-        Serial1.println("flash storage found");
+        // Serial1.println("flash storage found");
     }
 }
 
 void save_config( void )
 {
     config_store.write(_config);
-    Serial1.println("update flash storage done");
+    // Serial1.println("update flash storage done");
 }
 
 void encode_config(uint8_t *dest)
@@ -160,8 +162,10 @@ void encode_config(uint8_t *dest)
     dest[45] = config->GATE_8_SOURCE;
     dest[46] = config->GATE_8_NOTE;
     dest[47] = config->GATE_8_INVERT;
+    dest[48] = config->MIDI_CHANNEL;
+    dest[49] = config->MERGE_MIDI;
 
-    int i = 48;
+    int i = 50;
     encode_float(&dest[i], config->CAL_1_0);
     i += 4;
     encode_float(&dest[i], config->CAL_1_1);
@@ -215,10 +219,10 @@ void decode_config(uint8_t *src)
     uint8_t check = calculate_checksum(src, SYSEX_CONFIG_MSG_LEN);
 
     if(check != checksum){
-        Serial1.println("checksum failed!");
+        // Serial1.println("checksum failed!");
         return;
     }
-    Serial1.println("checksum passed");
+    // Serial1.println("checksum passed");
 
     config->POLYPHONY_MODE = src[0];
     config->CV_1_SOURCE = src[1];
@@ -268,7 +272,9 @@ void decode_config(uint8_t *src)
     config->GATE_8_SOURCE = src[45];
     config->GATE_8_NOTE = src[46];
     config->GATE_8_INVERT = src[47];
-    int i = 48;
+    config->MIDI_CHANNEL = src[48];
+    config->MERGE_MIDI   = src[49];
+    int i = 50;
     
     config->CAL_1_0 = decode_float(&src[i]);
     i += 4;

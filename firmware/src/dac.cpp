@@ -41,6 +41,7 @@ void dac_init()
 
 void dac_set_chan_one(int val)
 {
+    // Serial1.println("dac 1");
     // Serial1.println(val);
     dac->setVoltageA(val);
     dac->updateDAC();
@@ -48,6 +49,7 @@ void dac_set_chan_one(int val)
 
 void dac_set_chan_two(int val)
 {
+    // Serial1.println("dac 2");
     // Serial1.println(val);
     dac->setVoltageB(val);
     dac->updateDAC();
@@ -60,8 +62,9 @@ void dac_set_chan_three(int val)
     // analogWrite(A0, 1023);
     analogWrite(0, out_val);
     // analogWrite(0, map(val, 0, 4095, 0, 1023)); // 0->3.3v with 0->1023 (10 bit) value
-    Serial1.println(val);
-    Serial1.println(out_val);
+    // Serial1.println("dac 3");
+    // Serial1.println(val);
+    // Serial1.println(out_val);
 }
 
 void dac_set_chan_all(int val_one, int val_two)
@@ -73,8 +76,7 @@ void dac_set_chan_all(int val_one, int val_two)
 
 uint16_t midi_to_v_oct(uint8_t num_dac, uint8_t note)
 {
-    int clamped_note = (note > V_OCT_MAX) ? V_OCT_MAX : (note < V_OCT_MIN) ? V_OCT_MIN
-                                                                           : note;
+    int clamped_note = (note > V_OCT_MAX) ? V_OCT_MAX : (note < V_OCT_MIN) ? V_OCT_MIN : note;
     int index = clamped_note - V_OCT_MIN;
 
 // #ifdef CALIBRATION_MODE

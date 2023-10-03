@@ -57,7 +57,7 @@ void cv_2_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bo
 void cv_3_handle_note_on_off(uint8_t channel, uint8_t note, uint8_t velocity, bool is_note_on)
 {
 // #ifndef TRIPHONIC
-    if(config->POLYPHONY_MODE == TRIPHONIC_MODE)
+    if(config->POLYPHONY_MODE != TRIPHONIC_MODE)
     {
         if((config->CV_3_SOURCE == NOTE) && is_note_on)
         {

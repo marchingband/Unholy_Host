@@ -37,7 +37,7 @@ void usb_host_init(void)
 {
  // initialize USB HOST STACK
  if (UsbH.Init()) {
-   Serial1.println("USB host did not start");
+  //  Serial1.println("USB host did not start");
    while (1); //halt
  }
  USB_SetHandler(&CUSTOM_UHD_Handler);
